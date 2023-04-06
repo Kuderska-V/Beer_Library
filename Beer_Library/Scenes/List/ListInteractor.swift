@@ -18,7 +18,6 @@ protocol ListBusinessLogic {
 }
 
 protocol ListDataStore {
-    //var beers: [BeerItem] { get set }
     var filteredBeers: [BeerItem] { get }
     var isSelected: Bool { get }
 }
@@ -54,6 +53,4 @@ class ListInteractor: ListBusinessLogic, ListDataStore {
             presenter?.presentBeers(response: response)
         }
     }
-    
-
 }

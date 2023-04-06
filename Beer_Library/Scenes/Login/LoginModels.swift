@@ -24,7 +24,6 @@ enum Login {
         struct Response {
             let email: String?
             let password: String?
-
         }
     
         struct ViewModel {

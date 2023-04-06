@@ -25,24 +25,6 @@ class RegistrationRouter: NSObject, RegistrationRoutingLogic, RegistrationDataPa
     var dataStore: RegistrationDataStore?
   
     // MARK: Routing
-  
-//      func routeToTabBar(segue: UIStoryboardSegue?) {
-//        if let segue = segue {
-//          let destinationVC = segue.destination as! UITabBarController
-//          var destinationDS = destinationVC.router!.dataStore!
-//          passDataToMain(source: dataStore!, destination: &destinationDS)
-//        } else {
-//            let storyboard = UIStoryboard(name: ViewControllers.list.rawValue, bundle: nil)
-//            let destinationVC = storyboard.instantiateViewController(withIdentifier: ViewControllers.tabBar.rawValue) as! UITabBarController
-//          var destinationDS = destinationVC.router!.dataStore!
-//          passDataToMain(source: dataStore!, destination: &destinationDS)
-//            navigateToTabBar(source: viewController!, destination: destinationVC)
-//        }
-//
-//          let storyboard = UIStoryboard(name: Storyboards.tabBar.rawValue, bundle: nil)
-//            let destinationVC = storyboard.instantiateViewController(withIdentifier: ViewControllers.tabBar.rawValue) as! UITabBarController
-//          navigateToTabBar(source: viewController!, destination: destinationVC)
-//      }
     
     func routeToTabBar(segue: UIStoryboardSegue?) {
         let storyboard = UIStoryboard(name: Storyboards.tabBar.rawValue, bundle: nil)
@@ -50,7 +32,6 @@ class RegistrationRouter: NSObject, RegistrationRoutingLogic, RegistrationDataPa
         navigateToTabBar(source: viewController!, destination: destinationVC)
 
   }
-
 
     // MARK: Navigation
   
