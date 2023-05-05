@@ -12,9 +12,6 @@
 
 import UIKit
 
-class ProfileWorker
-{
-  func doSomeWork()
-  {
-  }
+class ProfileWorker {
+    
 }

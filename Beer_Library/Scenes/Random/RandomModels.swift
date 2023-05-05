@@ -11,16 +11,17 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
 enum Random {
     // MARK: Use cases
   
     enum ShowDetails {
-        struct Request {
-        }
-        
         struct Response {
             let beer: BeerItem?
+            var isFavorite: Bool
+            var image: UIImage
         }
         
         struct ViewModel {
@@ -29,17 +30,48 @@ enum Random {
             var image_url: String
             var tagline: String
             var description: String
+            var isFavorite: Bool
+            var image: UIImage
         }
     }
     
     enum SetFavoriteStatus {
-        struct Request {
-        }
         struct Response {
             let isFavorite: Bool
         }
+        
         struct ViewModel {
             let isFavorite: Bool
+        }
+    }
+    
+    enum Location {
+        struct Request {
+            var locations: [CLLocation]
+        }
+        struct Response {
+            var location: CLLocationCoordinate2D
+        }
+        struct ViewModel {
+            var location: CLLocationCoordinate2D
+        }
+    }
+    
+    enum Pin {
+        struct Response {
+            var pin: MKPointAnnotation?
+        }
+        struct ViewModel {
+            var pin: MKPointAnnotation?
+        }
+    }
+    
+    enum MapItem {
+        struct Response {
+            var mapItem: MKMapItem?
+        }
+        struct ViewModel {
+            var mapItem: MKMapItem?
         }
     }
 }

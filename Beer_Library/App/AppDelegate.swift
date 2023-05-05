@@ -7,6 +7,8 @@
 
 import UIKit
 import CoreData
+import GoogleSignIn
+import FacebookCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,29 +16,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
-//        let storyboard = UIStoryboard (name: Storyboards.tabBar.rawValue, bundle: Bundle.main)
-//        let vc = storyboard.instantiateViewController(withIdentifier: ViewControllers.tabBar.rawValue) as! UITabBarController
-//        let navVC = UINavigationController(rootViewController: vc)
-//        self.window?.rootViewController = navVC
-//        self.window?.makeKeyAndVisible()
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+            if error != nil || user == nil {
+              // Show the app's signed-out state.
+            } else {
+                let storyboard = UIStoryboard (name: Storyboards.tabBar.rawValue, bundle: Bundle.main)
+                let vc = storyboard.instantiateViewController(withIdentifier: ViewControllers.tabBar.rawValue) as! UITabBarController
+                let navVC = UINavigationController(rootViewController: vc)
+                self.window?.rootViewController = navVC
+                self.window?.makeKeyAndVisible()
+            }
+        }
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        var handled: Bool
+          handled = GIDSignIn.sharedInstance.handle(url)
+          if handled {
+            return true
+          }
+          return false
     }
 
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
+
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+
     }
     
     // MARK: Core Data stack
@@ -64,6 +78,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    
 }
 

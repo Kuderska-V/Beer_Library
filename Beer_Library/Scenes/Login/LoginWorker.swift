@@ -15,6 +15,5 @@ import UIKit
 class LoginWorker {
     
     func doSomeWork() {
-        
     }
 }

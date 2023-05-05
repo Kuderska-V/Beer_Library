@@ -14,6 +14,5 @@ import UIKit
 
 class RegistrationWorker {
     func doSomeWork() {
-        
     }
 }

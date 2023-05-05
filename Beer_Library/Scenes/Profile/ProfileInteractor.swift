@@ -13,24 +13,32 @@
 import UIKit
 
 protocol ProfileBusinessLogic {
-    func doSomething(request: Profile.ShowUser.Request)
+    func fetchUser(request: Profile.ShowUser.Request)
+    func logoutUser()
 }
 
 protocol ProfileDataStore {
-    //var name: String { get set }
 }
 
 class ProfileInteractor: ProfileBusinessLogic, ProfileDataStore {
     var presenter: ProfilePresentationLogic?
     var worker: ProfileWorker?
-    //var name: String = ""
+    let user = CoreDataManager()
+
+    // MARK: Fetch User
   
-    // MARK: Do something
-  
-    func doSomething(request: Profile.ShowUser.Request) {
-        
+    func fetchUser(request: Profile.ShowUser.Request) {
+        user.fetchProfileUser()
+        let firstName = user.userFirstName
+        let lastName = user.userLastName
+        let email = user.userEmail
+        let response = Profile.ShowUser.Response(firstName: firstName, lastName: lastName, email: email)
+        presenter?.presentUser(response: response)
+    }
     
-        let response = Profile.ShowUser.Response()
-        presenter?.presentSomething(response: response)
+    // MARK: Logout
+    
+    func logoutUser() {
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.loggedInUserEmail.rawValue)
     }
 }

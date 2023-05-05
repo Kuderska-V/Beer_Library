@@ -11,24 +11,25 @@
 //
 
 import UIKit
+import MapKit
 
 enum Detail {
+    
   // MARK: Use cases
-  
     enum ShowDetail {
         struct Request {
         }
         struct Response {
             let beer: BeerItem?
-            let isFavorite: Bool
+            var isFavorite: Bool
+            var image: UIImage
         }
         struct ViewModel {
             var name: String
             var first_brewed: String
             var image_url: String
-            var tagline: String
-            var description: String
-            let isFavorite: Bool
+            var isFavorite: Bool
+            var image: UIImage
         }
     }
     
@@ -36,10 +37,51 @@ enum Detail {
         struct Request {
         }
         struct Response {
-            let isFavorite: Bool
+            var isFavorite: Bool
         }
         struct ViewModel {
-            let isFavorite: Bool
+            var isFavorite: Bool
+        }
+    }
+    
+    enum Details {
+        struct Response {
+            var tagline: String
+            var description: String
+        }
+        struct ViewModel {
+            var tagline: String
+            var description: String
+        }
+    }
+    
+    enum Location {
+        struct Request {
+            var locations: [CLLocation]
+        }
+        struct Response {
+            var location: CLLocationCoordinate2D
+        }
+        struct ViewModel {
+            var location: CLLocationCoordinate2D
+        }
+    }
+    
+    enum Pin {
+        struct Response {
+            var pin: MKPointAnnotation?
+        }
+        struct ViewModel {
+            var pin: MKPointAnnotation?
+        }
+    }
+    
+    enum MapItem {
+        struct Response {
+            var mapItem: MKMapItem?
+        }
+        struct ViewModel {
+            var mapItem: MKMapItem?
         }
     }
 }

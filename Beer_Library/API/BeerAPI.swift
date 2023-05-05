@@ -9,8 +9,6 @@ import Foundation
 
 class BeerAPI {
     
-    static let shared = BeerAPI()
-    
     func fetchData(api: String, completion: @escaping (_ beers: [BeerItem]) -> Void) {
         guard let url = URL(string: api) else { return }
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in

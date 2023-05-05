@@ -36,7 +36,6 @@ enum Registration {
             let email: String?
             let password: String?
             let passwordConfirm: String?
-            
             var success: Bool
         }
     }

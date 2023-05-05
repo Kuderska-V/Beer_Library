@@ -13,6 +13,5 @@
 import UIKit
 
 class RandomWorker {
-    func doSomeWork() {
-    }
+
 }

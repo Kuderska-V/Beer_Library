@@ -13,10 +13,14 @@
 import UIKit
 import Kingfisher
 import MapKit
+import CoreLocation
 
 protocol RandomDisplayLogic: AnyObject {
     func displayRandomBeer(viewModel: Random.ShowDetails.ViewModel)
     func displayFavoriteButtonStatus(viewModel: Random.SetFavoriteStatus.ViewModel)
+    func displayPin(viewModel: Random.Pin.ViewModel)
+    func displayGoogleMapItem(viewModel: Random.MapItem.ViewModel)
+    func displayLocation(viewModel: Random.Location.ViewModel)
 }
 
 class RandomViewController: UIViewController, RandomDisplayLogic {
@@ -65,15 +69,12 @@ class RandomViewController: UIViewController, RandomDisplayLogic {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-    }
-    override func viewWillAppear(_ animated: Bool) {
         fetchRandomBeer()
-        print("Override \(fetchRandomBeer())")
+        determineCurrentLocation()
+        fetchLocationPin()
     }
   
-    // MARK: Random IBOutlets & IBActions
+    // MARK: Random IBOutlets
   
     @IBOutlet weak var imageBeer: UIImageView!
     @IBOutlet weak var nameBeer: UILabel!
@@ -83,23 +84,17 @@ class RandomViewController: UIViewController, RandomDisplayLogic {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
     
-    @IBAction func tapRandomButton(_ sender: UIButton) {
-        fetchRandomBeer()
-        print("tapped \(fetchRandomBeer())")
-    }
-    
-    @IBAction func toggleFavoriteButton(_ sender: UIBarButtonItem) {
-        interactor?.setFavoriteStatus()
-    }
-    
-    @IBAction func tapGetDirectionButton(_ sender: UIButton) {
-    }
-    
-    // MARK: Fetch Random Details
+    var locationManager = CLLocationManager()
+
+    // MARK: Random Details
     
     func fetchRandomBeer() {
-        let request = Random.ShowDetails.Request()
-        interactor?.fetchRandomBeer(request: request)
+        interactor?.fetchRandomBeer()
+    }
+    
+    @IBAction func tapRandomButton(_ sender: UIButton) {
+        fetchRandomBeer()
+        fetchLocationPin()
     }
   
     func displayRandomBeer(viewModel: Random.ShowDetails.ViewModel) {
@@ -108,11 +103,63 @@ class RandomViewController: UIViewController, RandomDisplayLogic {
         taglineBeer.text = viewModel.tagline
         descriptionBeer.text = viewModel.description
         imageBeer.kf.setImage(with: URL(string: viewModel.image_url))
-       // favoriteButton.image = viewModel.isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
-        title = viewModel.name
+        favoriteButton.image = viewModel.image
+        navigationItem.title = viewModel.name
+    }
+    
+    // MARK: Favorite Button
+    
+    @IBAction func toggleFavoriteButton(_ sender: UIBarButtonItem) {
+            interactor?.checkButtonState()
     }
     
     func displayFavoriteButtonStatus(viewModel: Random.SetFavoriteStatus.ViewModel) {
-        favoriteButton.image = viewModel.isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+         favoriteButton.image = viewModel.isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+    }
+    
+    // MARK: Direction
+    
+    func determineCurrentLocation() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    func fetchLocationPin() {
+        interactor?.fetchLocationPin()
+    }
+    
+    func openGoogleMap() {
+        interactor?.fetchGoogleMapItem()
+    }
+    
+    @IBAction func tapGetDirectionButton(_ sender: UIButton) {
+        openGoogleMap()
+    }
+    
+    func displayLocation(viewModel: Random.Location.ViewModel) {
+        let region = MKCoordinateRegion(center: viewModel.location, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+        mapView!.setRegion(region, animated: true)
+    }
+    
+    func displayPin(viewModel: Random.Pin.ViewModel) {
+        mapView.addAnnotation(viewModel.pin!)
+    }
+    
+    func displayGoogleMapItem(viewModel: Random.MapItem.ViewModel) {
+        let mapItem = viewModel.mapItem
+        mapItem!.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+    }
+}
+
+extension RandomViewController: MKMapViewDelegate, CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let request = Random.Location.Request(locations: locations)
+        interactor?.fetchLocation(request: request)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+            print("Error - locationManager: \(error.localizedDescription)")
     }
 }

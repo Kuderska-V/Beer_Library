@@ -15,7 +15,10 @@ import UIKit
 protocol DetailPresentationLogic {
     func presentBeerDetails(response: Detail.ShowDetail.Response)
     func presentFavoriteStatus(response: Detail.SetFavoriteStatus.Response)
-
+    func presentDetails(response: Detail.Details.Response)
+    func presentPin(response: Detail.Pin.Response)
+    func presentGoogleMapItem(response: Detail.MapItem.Response)
+    func presentLocation(response: Detail.Location.Response)
 }
 
 class DetailPresenter: DetailPresentationLogic {
@@ -28,10 +31,15 @@ class DetailPresenter: DetailPresentationLogic {
             name: response.beer!.name,
             first_brewed: response.beer!.first_brewed,
             image_url: response.beer!.image_url,
-            tagline: response.beer!.tagline,
-            description: response.beer!.description,
-            isFavorite: response.isFavorite)
+            isFavorite: response.isFavorite,
+            image: response.image
+        )
         viewController?.displayBeerDetails(viewModel: viewModel)
+    }
+    
+    func presentDetails(response: Detail.Details.Response) {
+        let viewModel = Detail.Details.ViewModel(tagline: response.tagline, description: response.description)
+        viewController?.displayDetails(viewModel: viewModel)
     }
     
     // MARK: Present Favorite Status
@@ -39,5 +47,22 @@ class DetailPresenter: DetailPresentationLogic {
     func presentFavoriteStatus(response: Detail.SetFavoriteStatus.Response) {
         let viewModel = Detail.SetFavoriteStatus.ViewModel(isFavorite: response.isFavorite)
         viewController?.displayFavoriteButtonStatus(viewModel: viewModel)
+    }
+    
+    // MARK: Present Location
+    
+    func presentLocation(response: Detail.Location.Response) {
+        let viewModel = Detail.Location.ViewModel(location: response.location)
+        viewController?.displayLocation(viewModel: viewModel)
+    }
+    
+    func presentPin(response: Detail.Pin.Response) {
+        let viewModel = Detail.Pin.ViewModel(pin: response.pin)
+        viewController?.displayPin(viewModel: viewModel)
+    }
+    
+    func presentGoogleMapItem(response: Detail.MapItem.Response) {
+        let viewModel = Detail.MapItem.ViewModel(mapItem: response.mapItem)
+        viewController?.displayGoogleMapItem(viewModel: viewModel)
     }
 }

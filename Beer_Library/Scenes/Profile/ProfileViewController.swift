@@ -13,10 +13,11 @@
 import UIKit
 
 protocol ProfileDisplayLogic: AnyObject {
-    func displaySomething(viewModel: Profile.ShowUser.ViewModel)
+    func displayUser(viewModel: Profile.ShowUser.ViewModel)
 }
 
 class ProfileViewController: UIViewController, ProfileDisplayLogic {
+    
     var interactor: ProfileBusinessLogic?
     var router: (NSObjectProtocol & ProfileRoutingLogic & ProfileDataPassing)?
 
@@ -39,6 +40,7 @@ class ProfileViewController: UIViewController, ProfileDisplayLogic {
         let interactor = ProfileInteractor()
         let presenter = ProfilePresenter()
         let router = ProfileRouter()
+        
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
@@ -62,21 +64,70 @@ class ProfileViewController: UIViewController, ProfileDisplayLogic {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Profile"
-        showUser()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchUser()
     }
   
-    // MARK: Do something   
+    // MARK: Profile IBOutlets
+    
     @IBOutlet weak var firstName: UILabel!
     @IBOutlet weak var lastName: UILabel!
     @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBOutlet weak var imageInstagram: UIImageView!
+
+    var instagramApi = InstagramApi.shared
+    var testUserData = InstagramTestUser(access_token: "", user_id: 0)
+    var instagramUser: InstagramUser?
+   var vc: InstagramViewController?
     
-    func showUser() {
+    // MARK: Fetch User
+    
+    func fetchUser() {
         let request = Profile.ShowUser.Request()
-        interactor?.doSomething(request: request)
+        interactor?.fetchUser(request: request)
     }
-  
-    func displaySomething(viewModel: Profile.ShowUser.ViewModel) {
-        //nameTextField.text = viewModel.name
+    
+    func displayUser(viewModel: Profile.ShowUser.ViewModel) {
+        firstName.text = viewModel.firstName
+        lastName.text = viewModel.lastName
+        email.text = viewModel.email
+    }
+    
+    // MARK: Favorite Beers Button
+    
+    @IBAction func tapFavBeersButton(_ sender: UIButton) {
+        router?.routeToFavoriteBeers(segue: nil)
+    }
+    
+    @IBAction func tapEditButton(_ sender: UIBarButtonItem) {
+        router?.routeToEdit(segue: nil)
+    }
+    
+    // MARK: Fetch Instagram Photo
+    
+    func fetchInstagramPhoto() {
+        vc?.instagramApi = InstagramApi.shared
+        vc?.mainVC = self
+        router?.routeToInstagram(segue: nil)
+    }
+    
+    @IBAction func tapInstagramBtn(_ sender: Any) {
+        fetchInstagramPhoto()
+    }
+    
+    // MARK: Logout
+    
+    @IBAction func tapLogoutButton(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            self.interactor?.logoutUser()
+            self.router?.routeToLogin()
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alert, animated: true, completion: nil)
     }
 }

@@ -11,13 +11,17 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 protocol LoginDisplayLogic: AnyObject {
     func displayLogin(viewModel: Login.User.ViewModel)
+    func displayGoogleLogin()
+    func displayFacebookLogin()
     func showIncorrectPasswordAlert()
+    func showEmptyFieldsAlert()
 }
 
-class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDelegate {
+class LoginViewController: UIViewController, LoginDisplayLogic {
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
 
@@ -63,28 +67,29 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureLayouts()
+    }
+    
+    func configureLayouts() {
         email.delegate = self
         password.delegate = self
+        googleLogin?.setImage(UIImage(named: "google"), for: .normal)
+        googleLogin?.configuration?.imagePadding = 10
+        googleLogin?.layer.cornerRadius = 7
+        googleLogin?.layer.borderWidth = 1
+        googleLogin?.layer.borderColor = UIColor.gray.cgColor
+        facebookLogin?.setImage(UIImage(named: "facebook"), for: .normal)
+        facebookLogin?.configuration?.imagePadding = 10
     }
   
-    // MARK: Login IBOutlets & IBActions
+    // MARK: IBOutlets
   
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var googleLogin: UIButton!
+    @IBOutlet weak var facebookLogin: UIButton!
     
-    @IBAction func pressLogin(_ sender: UIButton) {
-        if areSomeFieldsEmpty() {
-            self.showAlertMessage(message: AlertController.fieldsEmpty.rawValue)
-            return
-        }
-        login()
-    }
-    
-    @IBAction func pressSignUp(_ sender: UIButton) {
-        router?.routeToRegistration(segue: nil)
-    }
-    
-    // MARK: Fetch login
+    // MARK: Login
     
     func login() {
         let userEmail = email.text
@@ -94,17 +99,76 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
     }
   
     func displayLogin(viewModel: Login.User.ViewModel) {
-        if viewModel.success == true {
-            router?.routeToTabBar(segue: nil)
-            print("Success")
+        router?.routeToTabBar(segue: nil)
+    }
+    
+    @IBAction func pressLogin(_ sender: Any) {
+        login()
+    }
+    
+    // MARK: Google Login
+    
+    func loginWithGoogle() {
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
+            guard error == nil else { return }
+            guard let signInResult = signInResult else { return }
+            let userGoogle = signInResult.user
+            let email = userGoogle.profile!.email
+            let firstName = userGoogle.profile!.givenName
+            let lastName = userGoogle.profile!.familyName
+            let request = Login.Socials.Request(firstName: firstName, lastName: lastName, email: email)
+            self.interactor?.googleLogin(request: request)
         }
     }
+    
+    @IBAction func loginWithGoogle(_ sender: UIButton) {
+        loginWithGoogle()
+    }
+    
+    func displayGoogleLogin() {
+        router?.routeToTabBar(segue: nil)
+    }
+    
+    // MARK: Fcebook Login
+    
+    func loginWithFacebook() {
+        interactor?.facebookLogin()
+    }
+
+    @IBAction func loginWithFacebook(_ sender: UIButton) {
+        loginWithFacebook()
+    }
+    
+    func displayFacebookLogin() {
+        router?.routeToTabBar(segue: nil)
+    }
+    
+    // MARK: Sign up
+    
+    @IBAction func pressSignUp(_ sender: UIButton) {
+        router?.routeToRegistration(segue: nil)
+    }
+    
+    // MARK: Show Alerts
     
     func showIncorrectPasswordAlert() {
         self.showAlertMessage(message: AlertController.incorrectPassword.rawValue)
     }
     
-    private func areSomeFieldsEmpty() -> Bool {
-       email.text!.isEmpty || password.text!.isEmpty
+    func showEmptyFieldsAlert() {
+        self.showAlertMessage(message: AlertController.fieldsEmpty.rawValue)
     }
 }
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == email {
+            password.becomeFirstResponder()
+        } else if textField == password {
+            pressLogin(textField)
+        }
+        return true
+    }
+}
+
+

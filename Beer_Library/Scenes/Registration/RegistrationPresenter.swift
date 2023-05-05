@@ -17,23 +17,25 @@ protocol RegistrationPresentationLogic {
     func presentInvalidPassword()
     func presentInvalidEmail()
     func presentPasswordConfirmationError()
+    func presentEmptyFields()
 }
 
 class RegistrationPresenter: RegistrationPresentationLogic {
     weak var viewController: RegistrationDisplayLogic?
   
-    // MARK: Do something
+    // MARK: Present Registered User
   
     func presentRegisteredUser(response: Registration.User.Response) {
-        let viewModel = Registration.User.ViewModel(
-            firstName: response.firstName?.uppercased(),
-            lastName: response.lastName?.uppercased(),
-            email: response.email,
-            password: response.password,
-            passwordConfirm: response.passwordConfirm,
-            success: true)
+        let viewModel = Registration.User.ViewModel(firstName: response.firstName,
+                                                    lastName: response.lastName,
+                                                    email: response.email,
+                                                    password: response.password,
+                                                    passwordConfirm: response.passwordConfirm,
+                                                    success: true)
         viewController?.displayRegisteredUser(viewModel: viewModel)
     }
+    
+    // MARK: Present Alerts
     
     func presentInvalidPassword() {
         viewController?.showInvalidPasswordAlert()
@@ -45,5 +47,8 @@ class RegistrationPresenter: RegistrationPresentationLogic {
     
     func presentPasswordConfirmationError() {
         viewController?.showPasswordConfirmationAlert()
+    }
+    func presentEmptyFields() {
+        viewController?.showEmptyFieldsAlert()
     }
 }

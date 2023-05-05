@@ -12,9 +12,11 @@
 
 import UIKit
 
-@objc protocol ProfileRoutingLogic
-{
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+@objc protocol ProfileRoutingLogic {
+    func routeToFavoriteBeers(segue: UIStoryboardSegue?)
+    func routeToEdit(segue: UIStoryboardSegue?)
+    func routeToInstagram(segue: UIStoryboardSegue?)
+    func routeToLogin()
 }
 
 protocol ProfileDataPassing {
@@ -26,33 +28,68 @@ class ProfileRouter: NSObject, ProfileRoutingLogic, ProfileDataPassing {
     var dataStore: ProfileDataStore?
   
     // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
+    
+    func routeToFavoriteBeers(segue: UIStoryboardSegue?) {
+        if let segue = segue {
+            let destinationVC = segue.destination as! FavoriteBeersViewController
+            var destinationDS = destinationVC.router!.dataStore!
+            passDataToFavorites(source: dataStore!, destination: &destinationDS)
+        } else {
+            let storyboard = UIStoryboard(name: Storyboards.favorites.rawValue, bundle: nil)
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: ViewControllers.favorites.rawValue) as! FavoriteBeersViewController
+            var destinationDS = destinationVC.router!.dataStore!
+            passDataToFavorites(source: dataStore!, destination: &destinationDS)
+            navigateToFavorites(source: viewController!, destination: destinationVC)
+        }
+    }
+    
+    func routeToEdit(segue: UIStoryboardSegue?) {
+        if let segue = segue {
+            let destinationVC = segue.destination as! EditViewController
+            var destinationDS = destinationVC.router!.dataStore!
+            passDataToEdit(source: dataStore!, destination: &destinationDS)
+        } else {
+            let storyboard = UIStoryboard(name: Storyboards.edit.rawValue, bundle: nil)
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: ViewControllers.edit.rawValue) as! EditViewController
+            var destinationDS = destinationVC.router!.dataStore!
+            passDataToEdit(source: dataStore!, destination: &destinationDS)
+            navigateToEdit(source: viewController!, destination: destinationVC)
+        }
+    }
+    
+    func routeToInstagram(segue: UIStoryboardSegue?) {
+        let storyboard = UIStoryboard(name: Storyboards.profile.rawValue, bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: ViewControllers.instagram.rawValue) as! InstagramViewController
+        navigateToInstagram(source: viewController!, destination: destinationVC)
+    }
+    
+    func routeToLogin() {
+        let storyboard = UIStoryboard(name: Storyboards.login.rawValue, bundle: Bundle.main)
+        let vc = storyboard.instantiateViewController(withIdentifier: ViewControllers.login.rawValue) as? LoginViewController
+        let navVC = UINavigationController(rootViewController: vc!)
+        viewController?.view.window?.rootViewController = navVC
+        viewController?.view.window?.makeKeyAndVisible()
+    }
 
   // MARK: Navigation
-  
-  //func navigateToSomewhere(source: ProfileViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
+    
+    func navigateToFavorites(source: ProfileViewController, destination: FavoriteBeersViewController) {
+        source.show(destination, sender: nil)
+    }
+    
+    func navigateToEdit(source: ProfileViewController, destination: EditViewController) {
+        source.show(destination, sender: nil)
+    }
+    
+    func navigateToInstagram(source: ProfileViewController, destination: InstagramViewController) {
+        source.present(destination, animated: true)
+    }
   
   // MARK: Passing data
   
-  //func passDataToSomewhere(source: ProfileDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+    func passDataToFavorites(source: ProfileDataStore, destination: inout FavoriteBeersDataStore) {
+    }
+    
+    func passDataToEdit(source: ProfileDataStore, destination: inout EditDataStore) {
+    }
 }

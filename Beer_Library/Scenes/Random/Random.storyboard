@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Title-->
+        <!--Random View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="RandomVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="RandomViewController" customModule="Beer_Library" customModuleProvider="target" sceneMemberID="viewController">
@@ -26,7 +26,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6co-sz-wbv">
                                                 <rect key="frame" x="140" y="10" width="113" height="35"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Random"/>
                                                 <connections>
                                                     <action selector="tapRandomButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="OAN-Kp-t5J"/>
                                                 </connections>
@@ -58,7 +58,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxP-en-MDU">
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxP-en-MDU">
                                                 <rect key="frame" x="20" y="569.66666666666663" width="353" height="240"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="240" id="3CM-ps-Lve"/>
@@ -136,17 +136,17 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" largeTitleDisplayMode="never" id="YfQ-aQ-RjV">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="star" catalog="system" id="t3B-F1-Amo">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="n56-0h-Tik">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="star" catalog="system" id="RDr-lm-N4M">
                             <connections>
-                                <action selector="toggleFavoriteButton:" destination="Y6W-OH-hqX" id="XWg-NS-sWX"/>
+                                <action selector="toggleFavoriteButton:" destination="Y6W-OH-hqX" id="Xtw-06-xAl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="descriptionBeer" destination="rcu-rJ-2ax" id="IG2-dJ-UU6"/>
-                        <outlet property="favoriteButton" destination="t3B-F1-Amo" id="tkf-ok-V6J"/>
+                        <outlet property="favoriteButton" destination="RDr-lm-N4M" id="Bzm-Ze-zoO"/>
                         <outlet property="imageBeer" destination="Ra2-mx-Wcv" id="RoW-mV-plS"/>
                         <outlet property="mapView" destination="vxP-en-MDU" id="hlz-hn-1tT"/>
                         <outlet property="nameBeer" destination="BmD-00-dQ5" id="uoD-96-UqP"/>

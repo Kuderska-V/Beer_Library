@@ -22,7 +22,6 @@ enum List {
         struct Response {
             let beers: [BeerItem]
         }
-
         struct ViewModel {
             struct DisplayedBeer {
                 let name: String

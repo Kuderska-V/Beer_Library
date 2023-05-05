@@ -14,16 +14,19 @@ import UIKit
 
 enum Profile {
   // MARK: Use cases
-  
     enum ShowUser {
         struct Request {
-            
         }
         struct Response {
-
+            var firstName: String?
+            var lastName: String?
+            var email: String?
+            
         }
         struct ViewModel {
-
+            var firstName: String?
+            var lastName: String?
+            var email: String?
         }
     }
 }

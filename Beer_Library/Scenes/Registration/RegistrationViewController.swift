@@ -17,9 +17,10 @@ protocol RegistrationDisplayLogic: AnyObject {
     func showInvalidPasswordAlert()
     func showInvalidEmailAlert()
     func showPasswordConfirmationAlert()
+    func showEmptyFieldsAlert()
 }
 
-class RegistrationViewController: UIViewController, RegistrationDisplayLogic, UITextFieldDelegate {
+class RegistrationViewController: UIViewController, RegistrationDisplayLogic {
 
     var interactor: RegistrationBusinessLogic?
     var router: (NSObjectProtocol & RegistrationRoutingLogic & RegistrationDataPassing)?
@@ -66,7 +67,10 @@ class RegistrationViewController: UIViewController, RegistrationDisplayLogic, UI
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.hidesBackButton = true
+        configureLayouts()
+    }
+    
+    func configureLayouts() {
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         emailTextField.delegate = self
@@ -74,21 +78,13 @@ class RegistrationViewController: UIViewController, RegistrationDisplayLogic, UI
         passwordConfirmTextField.delegate = self
     }
   
-    // MARK: Registration IBOutlets & IBActions
+    // MARK: Registration IBOutlets
   
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmTextField: UITextField!
-    
-    @IBAction func pressSignUp(_ sender: UIButton) {
-        if areSomeFieldsEmpty() {
-            self.showAlertMessage(message: AlertController.fieldsEmpty.rawValue)
-            return
-        }
-        registerNewUser()
-    }
     
     // MARK: Fetch Registration
   
@@ -98,18 +94,21 @@ class RegistrationViewController: UIViewController, RegistrationDisplayLogic, UI
         let email = emailTextField.text
         let password = passwordTextField.text
         let passwordConfirm = passwordConfirmTextField.text
-        
         let request = Registration.User.Request(firstName: firstName, lastName: lastName, email: email, password: password, passwordConfirm: passwordConfirm)
         interactor?.registerNewUser(request: request)
     }
-  
+    
+    @IBAction func pressSignUp(_ sender: Any) {
+        registerNewUser()
+    }
+   
     func displayRegisteredUser(viewModel: Registration.User.ViewModel) {
-        if viewModel.success == true {
+        if viewModel.success == true  {
             router?.routeToTabBar(segue: nil)
-        } else {
-            self.showAlertMessage(message: AlertController.fieldsEmpty.rawValue)
         }
     }
+    
+    // MARK: Show Alerts
     
     func showInvalidPasswordAlert() {
         self.showAlertMessage(message: AlertController.invalidPassword.rawValue)
@@ -123,7 +122,25 @@ class RegistrationViewController: UIViewController, RegistrationDisplayLogic, UI
         self.showAlertMessage(message: AlertController.matchPasswords.rawValue)
     }
     
-    private func areSomeFieldsEmpty() -> Bool {
-        firstNameTextField.text!.isEmpty || lastNameTextField.text!.isEmpty || emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty || passwordConfirmTextField.text!.isEmpty
+    func showEmptyFieldsAlert() {
+        self.showAlertMessage(message: AlertController.fieldsEmpty.rawValue)
+    }
+}
+
+extension RegistrationViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == firstNameTextField {
+            lastNameTextField.becomeFirstResponder()
+        } else if textField == lastNameTextField {
+            emailTextField.becomeFirstResponder()
+        } else if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            passwordConfirmTextField.becomeFirstResponder()
+        } else if textField == passwordConfirmTextField {
+            pressSignUp(textField)
+        }
+        return true
     }
 }

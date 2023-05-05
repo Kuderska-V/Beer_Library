@@ -17,6 +17,27 @@ struct BeerItem: Codable {
     var description: String
     var createdAt: Date?
     @CodableIgnored var ownerEmail: String?
+    
+    static func from(_ object: NSManagedObject) -> BeerItem {
+        let id = object.value(forKeyPath: "id") as! Int
+        let name =  object.value(forKeyPath: "name") as? String
+        let year = object.value(forKeyPath: "year") as? String
+        let imageURL = object.value(forKeyPath: "image") as? String
+        let createdAt = object.value(forKeyPath: "created_at") as? Date
+        let ownerEmail = object.value(forKeyPath: "owner_email") as? String
+        return BeerItem(id: id, name: name ?? "Unknown", first_brewed: year ?? "Unknown", image_url: imageURL ?? "", tagline: "", description: "", createdAt: createdAt, ownerEmail: ownerEmail ?? "")
+    }
+    
+    @discardableResult static func toManagedObject(beer: BeerItem, entity: NSEntityDescription, context: NSManagedObjectContext) -> NSManagedObject {
+        let beerManagedObject = NSManagedObject(entity: entity, insertInto: context)
+        beerManagedObject.setValue(beer.id, forKeyPath: "id")
+        beerManagedObject.setValue(beer.name, forKeyPath: "name")
+        beerManagedObject.setValue(beer.first_brewed, forKeyPath: "year")
+        beerManagedObject.setValue(beer.image_url, forKeyPath: "image")
+        beerManagedObject.setValue(Date(), forKeyPath: "created_at")
+        beerManagedObject.setValue(beer.ownerEmail, forKey: "owner_email")
+        return beerManagedObject
+    }
 }
 
 @propertyWrapper

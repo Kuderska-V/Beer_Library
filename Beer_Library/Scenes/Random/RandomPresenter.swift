@@ -15,9 +15,14 @@ import UIKit
 protocol RandomPresentationLogic {
     func presentRandomBeer(response: Random.ShowDetails.Response)
     func presentFavoriteStatus(response: Random.SetFavoriteStatus.Response)
+    func presentPin(response: Random.Pin.Response)
+    func presentGoogleMapItem(response: Random.MapItem.Response)
+    func presentLocation(response: Random.Location.Response)
 }
 
 class RandomPresenter: RandomPresentationLogic {
+
+    
     weak var viewController: RandomDisplayLogic?
   
     // MARK: Present Random Beer
@@ -28,7 +33,9 @@ class RandomPresenter: RandomPresentationLogic {
             first_brewed: response.beer!.first_brewed,
             image_url: response.beer!.image_url,
             tagline: response.beer!.tagline,
-            description: response.beer!.description
+            description: response.beer!.description,
+            isFavorite: response.isFavorite,
+            image: response.image
         )
         viewController?.displayRandomBeer(viewModel: viewModel)
     }
@@ -38,5 +45,22 @@ class RandomPresenter: RandomPresentationLogic {
     func presentFavoriteStatus(response: Random.SetFavoriteStatus.Response) {
         let viewModel = Random.SetFavoriteStatus.ViewModel(isFavorite: response.isFavorite)
         viewController?.displayFavoriteButtonStatus(viewModel: viewModel)
+    }
+    
+    // MARK: Present Location
+    
+    func presentPin(response: Random.Pin.Response) {
+        let viewModel = Random.Pin.ViewModel(pin: response.pin)
+        viewController?.displayPin(viewModel: viewModel)
+    }
+    
+    func presentGoogleMapItem(response: Random.MapItem.Response) {
+        let viewModel = Random.MapItem.ViewModel(mapItem: response.mapItem)
+        viewController?.displayGoogleMapItem(viewModel: viewModel)
+    }
+    
+    func presentLocation(response: Random.Location.Response) {
+        let viewModel = Random.Location.ViewModel(location: response.location)
+        viewController?.displayLocation(viewModel: viewModel)
     }
 }

@@ -25,20 +25,22 @@ protocol ListDataStore {
 class ListInteractor: ListBusinessLogic, ListDataStore {
     var isSelected: Bool = false
     var presenter: ListPresentationLogic?
-    var listWorker = ListWorker()
     var beers: [BeerItem] = []
     var filteredBeers: [BeerItem] = []
+    let beerApi = BeerAPI()
   
     // MARK: Fetch Beers
   
     func fetchBeers(request: List.ShowBeers.Request) {
-        BeerAPI.shared.fetchData(api: "https://api.punkapi.com/v2/beers/") { [self] beers in
+        beerApi.fetchData(api: "https://api.punkapi.com/v2/beers/") { [self] beers in
             self.beers = beers
             self.filteredBeers = beers
             let response = List.ShowBeers.Response(beers: beers)
             presenter?.presentBeers(response: response)
         }
     }
+    
+    // MARK: Fetch Filtered Beers
     
     func fetchFilteredBeers(request: List.ShowBeers.Request) {
         if request.text!.isEmpty {

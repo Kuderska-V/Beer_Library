@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Favorite Beers-->
+        <scene sceneID="fUz-N9-9cx">
+            <objects>
+                <tableViewController storyboardIdentifier="FavoriteVC" title="Favorite Beers" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JmV-k6-3pb" customClass="FavoriteBeersViewController" customModule="Beer_Library" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Lp1-Os-hnE">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="70" id="MfC-bA-ttN" customClass="FavoriteTableViewCell" customModule="Beer_Library" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MfC-bA-ttN" id="yzb-ZH-YzF">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ly-JH-f4N">
+                                            <rect key="frame" x="96" y="20" width="157" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXi-3T-bTj">
+                                            <rect key="frame" x="273" y="20" width="100" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="6ty-hq-DGa"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Cz-AY-Ura">
+                                            <rect key="frame" x="20" y="7" width="56" height="56"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="ZG5-jM-90q"/>
+                                                <constraint firstAttribute="width" secondItem="1Cz-AY-Ura" secondAttribute="height" multiplier="1:1" id="ZHo-lI-WGt"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="1Cz-AY-Ura" secondAttribute="bottom" constant="7" id="2pB-We-1Nx"/>
+                                        <constraint firstItem="1Cz-AY-Ura" firstAttribute="leading" secondItem="yzb-ZH-YzF" secondAttribute="leading" constant="20" symbolic="YES" id="57r-lv-6p2"/>
+                                        <constraint firstItem="tXi-3T-bTj" firstAttribute="top" secondItem="yzb-ZH-YzF" secondAttribute="top" constant="20" id="NFx-EP-szP"/>
+                                        <constraint firstAttribute="bottom" secondItem="tXi-3T-bTj" secondAttribute="bottom" constant="20" id="X65-eA-obB"/>
+                                        <constraint firstAttribute="trailing" secondItem="tXi-3T-bTj" secondAttribute="trailing" constant="20" symbolic="YES" id="YwM-Ms-vIr"/>
+                                        <constraint firstItem="4ly-JH-f4N" firstAttribute="top" secondItem="yzb-ZH-YzF" secondAttribute="top" constant="20" id="eC1-o9-kd0"/>
+                                        <constraint firstAttribute="bottom" secondItem="4ly-JH-f4N" secondAttribute="bottom" constant="20" id="fGS-gS-htT"/>
+                                        <constraint firstItem="tXi-3T-bTj" firstAttribute="leading" secondItem="4ly-JH-f4N" secondAttribute="trailing" constant="20" id="ke8-og-5hU"/>
+                                        <constraint firstItem="4ly-JH-f4N" firstAttribute="leading" secondItem="1Cz-AY-Ura" secondAttribute="trailing" constant="20" id="oYo-EA-1tJ"/>
+                                        <constraint firstItem="1Cz-AY-Ura" firstAttribute="top" secondItem="yzb-ZH-YzF" secondAttribute="top" constant="7" id="vP4-ZB-9gc"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="beerImage" destination="1Cz-AY-Ura" id="bpV-hV-i8w"/>
+                                    <outlet property="name" destination="4ly-JH-f4N" id="y3o-HC-qjI"/>
+                                    <outlet property="year" destination="tXi-3T-bTj" id="7z9-4i-pFU"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="JmV-k6-3pb" id="IhQ-uq-VHf"/>
+                            <outlet property="delegate" destination="JmV-k6-3pb" id="3uB-cn-dvf"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Favorite Beers" id="A1I-Eq-62L">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis.circle" catalog="system" id="vxk-SK-MEO">
+                            <connections>
+                                <action selector="tapFilterButton:" destination="JmV-k6-3pb" id="fu7-h5-Uw5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vk7-r3-JTE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="194.6564885496183" y="191.5492957746479"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ellipsis.circle" catalog="system" width="128" height="123"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

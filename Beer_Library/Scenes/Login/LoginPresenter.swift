@@ -14,24 +14,37 @@ import UIKit
 
 protocol LoginPresentationLogic {
     func presentLogin(response: Login.User.Response)
+    func presentGoogleLogin()
+    func presentFacebookLogin()
     func presentIncorrectPassword()
+    func presentEmptyFields()
 }
 
 class LoginPresenter: LoginPresentationLogic {
     weak var viewController: LoginDisplayLogic?
 
-    // MARK: Do something
+    // MARK: Present User
 
     func presentLogin(response: Login.User.Response) {
-        let viewModel = Login.User.ViewModel(email: response.email, password: response.password, success: true)
-        if viewModel.success == true {
-            viewController?.displayLogin(viewModel: viewModel)
-        } else {
-            return
-        }
+        let viewModel = Login.User.ViewModel(email: response.email, password: response.password)
+        viewController?.displayLogin(viewModel: viewModel)
     }
+    
+    func presentGoogleLogin() {
+        viewController?.displayGoogleLogin()
+    }
+    
+    func presentFacebookLogin() {
+        viewController?.displayFacebookLogin()
+    }
+    
+    // MARK: Present Alerts
     
     func presentIncorrectPassword() {
         viewController?.showIncorrectPasswordAlert()
+    }
+    
+    func presentEmptyFields() {
+        viewController?.showEmptyFieldsAlert()
     }
 }

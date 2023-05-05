@@ -26,20 +26,34 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     var dataStore: LoginDataStore?
   
     // MARK: Routing
-  
-    func routeToTabBar(segue: UIStoryboardSegue?) {
-        let storyboard = UIStoryboard(name: Storyboards.tabBar.rawValue, bundle: nil)
-          let destinationVC = storyboard.instantiateViewController(withIdentifier: ViewControllers.tabBar.rawValue) as! UITabBarController
-        navigateToTabBar(source: viewController!, destination: destinationVC)
-
-  }
     
-    func routeToRegistration(segue: UIStoryboardSegue?) {
-        let storyboard = UIStoryboard(name: Storyboards.registration.rawValue, bundle: nil)
-        let destinationVC = storyboard.instantiateViewController(withIdentifier: ViewControllers.registration.rawValue) as! RegistrationViewController
-        navigateToRegistration(source: viewController!, destination: destinationVC)
+    func routeToTabBar(segue: UIStoryboardSegue?) {
+        if let segue = segue {
+            let destinationVC = segue.destination as! ListViewController
+            //var destinationDS = destinationVC.router!.dataStore!
+           // passDataToMain(source: RegistrationDataStore, destination: inout ListDataStore)
+        } else {
+            let storyboard = UIStoryboard(name: Storyboards.tabBar.rawValue, bundle: nil)
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: ViewControllers.tabBar.rawValue) as! UITabBarController
+            //var destinationDS = destinationVC.router!.dataStore!
+            //passDataToMain(source: RegistrationDataStore, destination: inout ListDataStore)
+            navigateToTabBar(source: viewController!, destination: destinationVC)
+        }
     }
 
+    func routeToRegistration(segue: UIStoryboardSegue?) {
+        if let segue = segue {
+            let destinationVC = segue.destination as! RegistrationViewController
+            var destinationDS = destinationVC.router!.dataStore!
+            passDataToRegistration(source: dataStore!, destination: &destinationDS)
+        } else {
+            let storyboard = UIStoryboard(name: Storyboards.registration.rawValue, bundle: nil)
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: ViewControllers.registration.rawValue) as! RegistrationViewController
+            var destinationDS = destinationVC.router!.dataStore!
+            passDataToRegistration(source: dataStore!, destination: &destinationDS)
+            navigateToRegistration(source: viewController!, destination: destinationVC)
+        }
+    }
 
   // MARK: Navigation
   
@@ -49,12 +63,13 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     
     func navigateToTabBar(source: LoginViewController, destination: UITabBarController) {
         source.show(destination, sender: nil)
-
     }
   
   // MARK: Passing data
     
     func passDataToMain(source: LoginDataStore, destination: inout UITabBarController) {
-     // destination.name = source.name
+    }
+    
+    func passDataToRegistration(source: LoginDataStore, destination: inout RegistrationDataStore) {
     }
 }

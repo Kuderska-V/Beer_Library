@@ -15,6 +15,8 @@ enum Storyboards: String {
     case random = "Random"
     case profile = "Profile"
     case detail = "Detail"
+    case favorites = "Favorites"
+    case edit = "Edit"
 }
 
 enum ViewControllers: String {
@@ -25,6 +27,9 @@ enum ViewControllers: String {
     case random = "RandomVC"
     case profile = "ProfileVC"
     case detail = "DetailVC"
+    case favorites = "FavoriteVC"
+    case edit = "EditVC"
+    case instagram = "InstagramVC"
 }
 
 enum UserDefaultsKeys: String {

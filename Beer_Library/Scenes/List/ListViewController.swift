@@ -46,7 +46,6 @@ class ListViewController: UITableViewController, ListDisplayLogic, UISearchBarDe
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
-        
     }
   
     // MARK: Routing
@@ -67,13 +66,8 @@ class ListViewController: UITableViewController, ListDisplayLogic, UISearchBarDe
         fetchBeers()
         setupSearchBar()
     }
-    
-    func setupSearchBar() {
-        searchBar.delegate = self
-        tableView.dataSource = self
-    }
 
-    // MARK: List IBOutlets & IBActions
+    // MARK: List IBOutlets
     
     @IBOutlet weak var searchBar: UISearchBar!
   
@@ -99,9 +93,7 @@ class ListViewController: UITableViewController, ListDisplayLogic, UISearchBarDe
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let displayedBeer = displayedBeers[indexPath.row]
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? BeerTableViewCell else {
-            fatalError()
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? BeerTableViewCell else { fatalError() }
         cell.name.text = displayedBeer.name
         cell.year.text = displayedBeer.year
         cell.beerImage.kf.setImage(with: URL(string: displayedBeer.image))
@@ -111,7 +103,13 @@ class ListViewController: UITableViewController, ListDisplayLogic, UISearchBarDe
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         router?.routeToDetail(segue: nil)
     }
-    // MARK: UISearchBarDelegate
+    
+    // MARK: Search Bar
+    
+    func setupSearchBar() {
+        searchBar.delegate = self
+        tableView.dataSource = self
+    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty {

@@ -13,10 +13,15 @@
 import UIKit
 import Kingfisher
 import MapKit
+import CoreLocation
 
 protocol DetailDisplayLogic: AnyObject {
     func displayBeerDetails(viewModel: Detail.ShowDetail.ViewModel)
     func displayFavoriteButtonStatus(viewModel: Detail.SetFavoriteStatus.ViewModel)
+    func displayDetails(viewModel: Detail.Details.ViewModel)
+    func displayPin(viewModel: Detail.Pin.ViewModel)
+    func displayGoogleMapItem(viewModel: Detail.MapItem.ViewModel)
+    func displayLocation(viewModel: Detail.Location.ViewModel)
 }
 
 class DetailViewController: UIViewController, DetailDisplayLogic {
@@ -66,9 +71,13 @@ class DetailViewController: UIViewController, DetailDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchBeerDetails()
+        mapView.delegate = self
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        determineCurrentLocation()
+        fetchLocationPin()
     }
   
-    // MARK: Detail IBOutlets & IBActions
+    // MARK: Detail IBOutlets
   
     @IBOutlet weak var imageBeer: UIImageView!
     @IBOutlet weak var nameBeer: UILabel!
@@ -78,33 +87,87 @@ class DetailViewController: UIViewController, DetailDisplayLogic {
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
     
-    @IBAction func tapGetDirection(_ sender: UIButton) {
-    }
+    var locationManager = CLLocationManager()
     
-    @IBAction func toggleFavoriteButton(_ sender: UIBarButtonItem) {
-        interactor?.setFavoriteStatus()
-    }
-    
-    // MARK: Fetch Details
+    // MARK: Beer Details
     
     func fetchBeerDetails() {
         let request = Detail.ShowDetail.Request()
-        interactor?.provideBeerDetails(request: request)
+        interactor?.fetchBeerDetails(request: request)
+    }
+    
+    func fetchDetails() {
+        interactor?.fetchDetails()
     }
   
     func displayBeerDetails(viewModel: Detail.ShowDetail.ViewModel) {
         nameBeer.text = viewModel.name
         yearBeer.text = viewModel.first_brewed
+        imageBeer.kf.setImage(with: URL(string: viewModel.image_url))
+        favoriteButton.image = viewModel.image
+        title = viewModel.name
+    }
+    
+    func displayDetails(viewModel: Detail.Details.ViewModel) {
         taglineBeer.text = viewModel.tagline
         descriptionBeer.text = viewModel.description
-        imageBeer.kf.setImage(with: URL(string: viewModel.image_url))
-        favoriteButton.image = viewModel.isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
-        title = viewModel.name
+    }
+    
+    // MARK: Favorite Button
+    
+    @IBAction func toggleFavoriteButton(_ sender: UIBarButtonItem) {
+        interactor?.checkButtonState()
     }
     
     func displayFavoriteButtonStatus(viewModel: Detail.SetFavoriteStatus.ViewModel) {
         favoriteButton.image = viewModel.isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
     }
     
+    // MARK: Location & Direction
     
+    func determineCurrentLocation() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    func fetchLocationPin() {
+        interactor?.fetchLocationPin()
+    }
+    
+    func openGoogleMap() {
+        interactor?.fetchGoogleMapItem()
+    }
+
+    @IBAction func tapGetDirection(_ sender: UIButton) {
+        openGoogleMap()
+    }
+    
+    func displayLocation(viewModel: Detail.Location.ViewModel) {
+        let region = MKCoordinateRegion(center: viewModel.location, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+        mapView!.setRegion(region, animated: true)
+    }
+    
+    func displayPin(viewModel: Detail.Pin.ViewModel) {
+        mapView.addAnnotation(viewModel.pin!)
+    }
+    
+    func displayGoogleMapItem(viewModel: Detail.MapItem.ViewModel) {
+        let mapItem = viewModel.mapItem
+        mapItem!.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+    }
 }
+
+extension DetailViewController: MKMapViewDelegate, CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let request = Detail.Location.Request(locations: locations)
+        interactor?.fetchLocation(request: request)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+            print("Error - locationManager: \(error.localizedDescription)")
+    }
+}
+
+

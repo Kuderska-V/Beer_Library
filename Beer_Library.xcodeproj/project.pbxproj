@@ -52,11 +52,25 @@
 		697ED12B29BB6779001253E3 /* RegistrationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697ED12529BB6779001253E3 /* RegistrationModels.swift */; };
 		697ED12C29BB6779001253E3 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697ED12629BB6779001253E3 /* RegistrationViewController.swift */; };
 		697ED12D29BB6779001253E3 /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697ED12729BB6779001253E3 /* RegistrationInteractor.swift */; };
+		6983D3192A04E651009E7465 /* InstagramPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983D3132A04E651009E7465 /* InstagramPresenter.swift */; };
+		6983D31A2A04E651009E7465 /* InstagramWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983D3142A04E651009E7465 /* InstagramWorker.swift */; };
+		6983D31B2A04E651009E7465 /* InstagramRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983D3152A04E651009E7465 /* InstagramRouter.swift */; };
+		6983D31C2A04E651009E7465 /* InstagramModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983D3162A04E651009E7465 /* InstagramModels.swift */; };
+		6983D31D2A04E651009E7465 /* InstagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983D3172A04E651009E7465 /* InstagramViewController.swift */; };
+		6983D31E2A04E651009E7465 /* InstagramInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983D3182A04E651009E7465 /* InstagramInteractor.swift */; };
 		699E75FC29DD960B00217363 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699E75FB29DD960B00217363 /* CoreDataManager.swift */; };
 		699E75FF29DDCA0B00217363 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699E75FE29DDCA0B00217363 /* Validator.swift */; };
 		699F165729D6E5AF00E09A2E /* BeerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699F165629D6E5AF00E09A2E /* BeerAPI.swift */; };
+		69ABE4BF29E6EF140084DEE1 /* FavoriteBeersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ABE4B929E6EF140084DEE1 /* FavoriteBeersPresenter.swift */; };
+		69ABE4C029E6EF140084DEE1 /* FavoriteBeersWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ABE4BA29E6EF140084DEE1 /* FavoriteBeersWorker.swift */; };
+		69ABE4C129E6EF140084DEE1 /* FavoriteBeersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ABE4BB29E6EF140084DEE1 /* FavoriteBeersRouter.swift */; };
+		69ABE4C229E6EF140084DEE1 /* FavoriteBeersModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ABE4BC29E6EF140084DEE1 /* FavoriteBeersModels.swift */; };
+		69ABE4C329E6EF140084DEE1 /* FavoriteBeersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ABE4BD29E6EF140084DEE1 /* FavoriteBeersViewController.swift */; };
+		69ABE4C429E6EF140084DEE1 /* FavoriteBeersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ABE4BE29E6EF140084DEE1 /* FavoriteBeersInteractor.swift */; };
+		69ABE4C629E6F0F60084DEE1 /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69ABE4C529E6F0F60084DEE1 /* Favorites.storyboard */; };
+		69ABE4C829E73B460084DEE1 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ABE4C729E73B460084DEE1 /* FavoriteTableViewCell.swift */; };
 		69B2DABF29D1A7AE001A4AEF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B2DABE29D1A7AE001A4AEF /* TabBarController.swift */; };
-		69B2DAC129D1BB71001A4AEF /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B2DAC029D1BB71001A4AEF /* Alert.swift */; };
+		69B2DAC129D1BB71001A4AEF /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B2DAC029D1BB71001A4AEF /* ViewControllerExtension.swift */; };
 		69B2DAC829D47C06001A4AEF /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B2DAC729D47C06001A4AEF /* BeerTableViewCell.swift */; };
 		69B2DACA29D48053001A4AEF /* BeerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B2DAC929D48053001A4AEF /* BeerItem.swift */; };
 		69B2DAD929D55D36001A4AEF /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B2DAD329D55D36001A4AEF /* DetailPresenter.swift */; };
@@ -67,6 +81,22 @@
 		69B2DADE29D55D36001A4AEF /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B2DAD829D55D36001A4AEF /* DetailInteractor.swift */; };
 		69B2DAE029D55D44001A4AEF /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69B2DADF29D55D44001A4AEF /* Detail.storyboard */; };
 		69B2DAE329D575DB001A4AEF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 69B2DAE229D575DB001A4AEF /* Kingfisher */; };
+		69CC605329FE5F2500A60C5B /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = 69CC605229FE5F2500A60C5B /* FacebookAEM */; };
+		69CC605529FE5F2500A60C5B /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 69CC605429FE5F2500A60C5B /* FacebookBasics */; };
+		69CC605729FE5F2500A60C5B /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 69CC605629FE5F2500A60C5B /* FacebookCore */; };
+		69CC605929FE5F2500A60C5B /* FacebookGamingServices in Frameworks */ = {isa = PBXBuildFile; productRef = 69CC605829FE5F2500A60C5B /* FacebookGamingServices */; };
+		69CC605B29FE5F2500A60C5B /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 69CC605A29FE5F2500A60C5B /* FacebookLogin */; };
+		69CC605D29FE5F2500A60C5B /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = 69CC605C29FE5F2500A60C5B /* FacebookShare */; };
+		69CC605F29FF986A00A60C5B /* InstagramVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CC605E29FF986A00A60C5B /* InstagramVC.swift */; };
+		69CC606129FF995300A60C5B /* InstagramApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CC606029FF995300A60C5B /* InstagramApi.swift */; };
+		69EC2AA629F9625000EA46ED /* EditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC2AA029F9625000EA46ED /* EditPresenter.swift */; };
+		69EC2AA729F9625000EA46ED /* EditWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC2AA129F9625000EA46ED /* EditWorker.swift */; };
+		69EC2AA829F9625000EA46ED /* EditRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC2AA229F9625000EA46ED /* EditRouter.swift */; };
+		69EC2AA929F9625000EA46ED /* EditModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC2AA329F9625000EA46ED /* EditModels.swift */; };
+		69EC2AAA29F9625000EA46ED /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC2AA429F9625000EA46ED /* EditViewController.swift */; };
+		69EC2AAB29F9625000EA46ED /* EditInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC2AA529F9625000EA46ED /* EditInteractor.swift */; };
+		69EC2AAD29F9625D00EA46ED /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69EC2AAC29F9625D00EA46ED /* Edit.storyboard */; };
+		69EC2AB029FAAE2500EA46ED /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 69EC2AAF29FAAE2500EA46ED /* GoogleSignIn */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,11 +166,25 @@
 		697ED12529BB6779001253E3 /* RegistrationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModels.swift; sourceTree = "<group>"; };
 		697ED12629BB6779001253E3 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		697ED12729BB6779001253E3 /* RegistrationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
+		6983D3132A04E651009E7465 /* InstagramPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramPresenter.swift; sourceTree = "<group>"; };
+		6983D3142A04E651009E7465 /* InstagramWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramWorker.swift; sourceTree = "<group>"; };
+		6983D3152A04E651009E7465 /* InstagramRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramRouter.swift; sourceTree = "<group>"; };
+		6983D3162A04E651009E7465 /* InstagramModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramModels.swift; sourceTree = "<group>"; };
+		6983D3172A04E651009E7465 /* InstagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramViewController.swift; sourceTree = "<group>"; };
+		6983D3182A04E651009E7465 /* InstagramInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramInteractor.swift; sourceTree = "<group>"; };
 		699E75FB29DD960B00217363 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		699E75FE29DDCA0B00217363 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		699F165629D6E5AF00E09A2E /* BeerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerAPI.swift; sourceTree = "<group>"; };
+		69ABE4B929E6EF140084DEE1 /* FavoriteBeersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeersPresenter.swift; sourceTree = "<group>"; };
+		69ABE4BA29E6EF140084DEE1 /* FavoriteBeersWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeersWorker.swift; sourceTree = "<group>"; };
+		69ABE4BB29E6EF140084DEE1 /* FavoriteBeersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeersRouter.swift; sourceTree = "<group>"; };
+		69ABE4BC29E6EF140084DEE1 /* FavoriteBeersModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeersModels.swift; sourceTree = "<group>"; };
+		69ABE4BD29E6EF140084DEE1 /* FavoriteBeersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeersViewController.swift; sourceTree = "<group>"; };
+		69ABE4BE29E6EF140084DEE1 /* FavoriteBeersInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeersInteractor.swift; sourceTree = "<group>"; };
+		69ABE4C529E6F0F60084DEE1 /* Favorites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorites.storyboard; sourceTree = "<group>"; };
+		69ABE4C729E73B460084DEE1 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		69B2DABE29D1A7AE001A4AEF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		69B2DAC029D1BB71001A4AEF /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		69B2DAC029D1BB71001A4AEF /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		69B2DAC729D47C06001A4AEF /* BeerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift; sourceTree = "<group>"; };
 		69B2DAC929D48053001A4AEF /* BeerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerItem.swift; sourceTree = "<group>"; };
 		69B2DAD329D55D36001A4AEF /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
@@ -150,6 +194,16 @@
 		69B2DAD729D55D36001A4AEF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		69B2DAD829D55D36001A4AEF /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
 		69B2DADF29D55D44001A4AEF /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		69CC605029FE5C4500A60C5B /* Beer_Library.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Beer_Library.entitlements; sourceTree = "<group>"; };
+		69CC605E29FF986A00A60C5B /* InstagramVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramVC.swift; sourceTree = "<group>"; };
+		69CC606029FF995300A60C5B /* InstagramApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramApi.swift; sourceTree = "<group>"; };
+		69EC2AA029F9625000EA46ED /* EditPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresenter.swift; sourceTree = "<group>"; };
+		69EC2AA129F9625000EA46ED /* EditWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWorker.swift; sourceTree = "<group>"; };
+		69EC2AA229F9625000EA46ED /* EditRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRouter.swift; sourceTree = "<group>"; };
+		69EC2AA329F9625000EA46ED /* EditModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModels.swift; sourceTree = "<group>"; };
+		69EC2AA429F9625000EA46ED /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		69EC2AA529F9625000EA46ED /* EditInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInteractor.swift; sourceTree = "<group>"; };
+		69EC2AAC29F9625D00EA46ED /* Edit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +211,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69CC605329FE5F2500A60C5B /* FacebookAEM in Frameworks */,
+				69CC605729FE5F2500A60C5B /* FacebookCore in Frameworks */,
+				69CC605D29FE5F2500A60C5B /* FacebookShare in Frameworks */,
+				69CC605529FE5F2500A60C5B /* FacebookBasics in Frameworks */,
+				69CC605929FE5F2500A60C5B /* FacebookGamingServices in Frameworks */,
 				69B2DAE329D575DB001A4AEF /* Kingfisher in Frameworks */,
+				69CC605B29FE5F2500A60C5B /* FacebookLogin in Frameworks */,
+				69EC2AB029FAAE2500EA46ED /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,13 +285,14 @@
 		69206DDF29CB9EC600D3E241 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				69206DE029CB9EE000D3E241 /* ProfilePresenter.swift */,
-				69206DE129CB9EE000D3E241 /* ProfileWorker.swift */,
-				69206DE229CB9EE000D3E241 /* ProfileRouter.swift */,
-				69206DE329CB9EE000D3E241 /* ProfileModels.swift */,
 				69206DE429CB9EE000D3E241 /* ProfileViewController.swift */,
 				69206DE529CB9EE000D3E241 /* ProfileInteractor.swift */,
+				69206DE129CB9EE000D3E241 /* ProfileWorker.swift */,
+				69206DE029CB9EE000D3E241 /* ProfilePresenter.swift */,
+				69206DE329CB9EE000D3E241 /* ProfileModels.swift */,
+				69206DE229CB9EE000D3E241 /* ProfileRouter.swift */,
 				69206DEE29CB9F0900D3E241 /* Profile.storyboard */,
+				69CC606229FF99CE00A60C5B /* Instagram */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -266,6 +328,7 @@
 		697ECFCC29B51A9E001253E3 /* Beer_Library */ = {
 			isa = PBXGroup;
 			children = (
+				69CC605029FE5C4500A60C5B /* Beer_Library.entitlements */,
 				699E75FD29DDB49800217363 /* Validator */,
 				69B2DACD29D49D66001A4AEF /* Model */,
 				69B2DAC629D43A1D001A4AEF /* API */,
@@ -308,6 +371,8 @@
 				69B2DAD229D55D1B001A4AEF /* Detail */,
 				69206DD229CB9E6100D3E241 /* Random */,
 				69206DDF29CB9EC600D3E241 /* Profile */,
+				69EC2A9F29F9622B00EA46ED /* Edit */,
+				69ABE4B829E6EECB0084DEE1 /* Favorite Beers */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -330,7 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				69206D7529CB311D00D3E241 /* Constants.swift */,
-				69B2DAC029D1BB71001A4AEF /* Alert.swift */,
+				69B2DAC029D1BB71001A4AEF /* ViewControllerExtension.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -377,6 +442,21 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		69ABE4B829E6EECB0084DEE1 /* Favorite Beers */ = {
+			isa = PBXGroup;
+			children = (
+				69ABE4BD29E6EF140084DEE1 /* FavoriteBeersViewController.swift */,
+				69ABE4C729E73B460084DEE1 /* FavoriteTableViewCell.swift */,
+				69ABE4BE29E6EF140084DEE1 /* FavoriteBeersInteractor.swift */,
+				69ABE4BA29E6EF140084DEE1 /* FavoriteBeersWorker.swift */,
+				69ABE4B929E6EF140084DEE1 /* FavoriteBeersPresenter.swift */,
+				69ABE4BC29E6EF140084DEE1 /* FavoriteBeersModels.swift */,
+				69ABE4BB29E6EF140084DEE1 /* FavoriteBeersRouter.swift */,
+				69ABE4C529E6F0F60084DEE1 /* Favorites.storyboard */,
+			);
+			path = "Favorite Beers";
+			sourceTree = "<group>";
+		};
 		69B2DAC629D43A1D001A4AEF /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,6 +487,35 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		69CC606229FF99CE00A60C5B /* Instagram */ = {
+			isa = PBXGroup;
+			children = (
+				69CC605E29FF986A00A60C5B /* InstagramVC.swift */,
+				69CC606029FF995300A60C5B /* InstagramApi.swift */,
+				6983D3132A04E651009E7465 /* InstagramPresenter.swift */,
+				6983D3142A04E651009E7465 /* InstagramWorker.swift */,
+				6983D3152A04E651009E7465 /* InstagramRouter.swift */,
+				6983D3162A04E651009E7465 /* InstagramModels.swift */,
+				6983D3172A04E651009E7465 /* InstagramViewController.swift */,
+				6983D3182A04E651009E7465 /* InstagramInteractor.swift */,
+			);
+			path = Instagram;
+			sourceTree = "<group>";
+		};
+		69EC2A9F29F9622B00EA46ED /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				69EC2AA429F9625000EA46ED /* EditViewController.swift */,
+				69EC2AA529F9625000EA46ED /* EditInteractor.swift */,
+				69EC2AA129F9625000EA46ED /* EditWorker.swift */,
+				69EC2AA029F9625000EA46ED /* EditPresenter.swift */,
+				69EC2AA329F9625000EA46ED /* EditModels.swift */,
+				69EC2AA229F9625000EA46ED /* EditRouter.swift */,
+				69EC2AAC29F9625D00EA46ED /* Edit.storyboard */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -425,6 +534,13 @@
 			name = Beer_Library;
 			packageProductDependencies = (
 				69B2DAE229D575DB001A4AEF /* Kingfisher */,
+				69EC2AAF29FAAE2500EA46ED /* GoogleSignIn */,
+				69CC605229FE5F2500A60C5B /* FacebookAEM */,
+				69CC605429FE5F2500A60C5B /* FacebookBasics */,
+				69CC605629FE5F2500A60C5B /* FacebookCore */,
+				69CC605829FE5F2500A60C5B /* FacebookGamingServices */,
+				69CC605A29FE5F2500A60C5B /* FacebookLogin */,
+				69CC605C29FE5F2500A60C5B /* FacebookShare */,
 			);
 			productName = Beer_Library;
 			productReference = 697ECFCA29B51A9E001253E3 /* Beer_Library.app */;
@@ -500,6 +616,8 @@
 			mainGroup = 697ECFC129B51A9E001253E3;
 			packageReferences = (
 				69B2DAE129D575DB001A4AEF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				69EC2AAE29FAAE2500EA46ED /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				69CC605129FE5F2500A60C5B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 697ECFCB29B51A9E001253E3 /* Products */;
 			projectDirPath = "";
@@ -521,10 +639,12 @@
 				69206D3629C6598100D3E241 /* Login.storyboard in Resources */,
 				69B2DAE029D55D44001A4AEF /* Detail.storyboard in Resources */,
 				69206DEF29CB9F0900D3E241 /* Profile.storyboard in Resources */,
+				69ABE4C629E6F0F60084DEE1 /* Favorites.storyboard in Resources */,
 				69206DED29CB9EFD00D3E241 /* Random.storyboard in Resources */,
 				697ECFDD29B51A9F001253E3 /* LaunchScreen.storyboard in Resources */,
 				697ECFDA29B51A9F001253E3 /* Assets.xcassets in Resources */,
 				69206D3C29C659F400D3E241 /* TabBar.storyboard in Resources */,
+				69EC2AAD29F9625D00EA46ED /* Edit.storyboard in Resources */,
 				69206D3A29C659CA00D3E241 /* List.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -550,49 +670,70 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69EC2AAB29F9625000EA46ED /* EditInteractor.swift in Sources */,
+				69ABE4BF29E6EF140084DEE1 /* FavoriteBeersPresenter.swift in Sources */,
 				697ED12929BB6779001253E3 /* RegistrationWorker.swift in Sources */,
 				69B2DAD929D55D36001A4AEF /* DetailPresenter.swift in Sources */,
 				69B2DADA29D55D36001A4AEF /* DetailWorker.swift in Sources */,
+				69ABE4C429E6EF140084DEE1 /* FavoriteBeersInteractor.swift in Sources */,
 				69206CE529C0BB0800D3E241 /* ListViewController.swift in Sources */,
 				69206DE929CB9EE000D3E241 /* ProfileModels.swift in Sources */,
+				69CC605F29FF986A00A60C5B /* InstagramVC.swift in Sources */,
 				69206CD129BCD60D00D3E241 /* LoginWorker.swift in Sources */,
 				69206CD529BCD60D00D3E241 /* LoginInteractor.swift in Sources */,
 				69B2DACA29D48053001A4AEF /* BeerItem.swift in Sources */,
-				69B2DAC129D1BB71001A4AEF /* Alert.swift in Sources */,
+				69ABE4C029E6EF140084DEE1 /* FavoriteBeersWorker.swift in Sources */,
+				69B2DAC129D1BB71001A4AEF /* ViewControllerExtension.swift in Sources */,
 				69206DDE29CB9EB600D3E241 /* RandomInteractor.swift in Sources */,
+				69ABE4C829E73B460084DEE1 /* FavoriteTableViewCell.swift in Sources */,
+				6983D31A2A04E651009E7465 /* InstagramWorker.swift in Sources */,
 				69206D7629CB311D00D3E241 /* Constants.swift in Sources */,
 				69206CE629C0BB0800D3E241 /* ListInteractor.swift in Sources */,
 				69B2DADC29D55D36001A4AEF /* DetailModels.swift in Sources */,
 				69B2DADE29D55D36001A4AEF /* DetailInteractor.swift in Sources */,
 				69206DDA29CB9EB600D3E241 /* RandomWorker.swift in Sources */,
+				69EC2AA729F9625000EA46ED /* EditWorker.swift in Sources */,
+				69ABE4C229E6EF140084DEE1 /* FavoriteBeersModels.swift in Sources */,
 				69B2DADD29D55D36001A4AEF /* DetailViewController.swift in Sources */,
 				699E75FF29DDCA0B00217363 /* Validator.swift in Sources */,
 				69B2DADB29D55D36001A4AEF /* DetailRouter.swift in Sources */,
 				697ECFCE29B51A9E001253E3 /* AppDelegate.swift in Sources */,
 				69206DE729CB9EE000D3E241 /* ProfileWorker.swift in Sources */,
 				699E75FC29DD960B00217363 /* CoreDataManager.swift in Sources */,
+				6983D31B2A04E651009E7465 /* InstagramRouter.swift in Sources */,
+				69ABE4C329E6EF140084DEE1 /* FavoriteBeersViewController.swift in Sources */,
 				69206DDD29CB9EB600D3E241 /* RandomViewController.swift in Sources */,
 				69206DDB29CB9EB600D3E241 /* RandomRouter.swift in Sources */,
 				69206CD029BCD60D00D3E241 /* LoginPresenter.swift in Sources */,
+				69ABE4C129E6EF140084DEE1 /* FavoriteBeersRouter.swift in Sources */,
 				697ED12C29BB6779001253E3 /* RegistrationViewController.swift in Sources */,
 				69206CD229BCD60D00D3E241 /* LoginRouter.swift in Sources */,
 				69206CE129C0BB0800D3E241 /* ListPresenter.swift in Sources */,
+				6983D31D2A04E651009E7465 /* InstagramViewController.swift in Sources */,
 				697ED12D29BB6779001253E3 /* RegistrationInteractor.swift in Sources */,
 				69206CD329BCD60D00D3E241 /* LoginModels.swift in Sources */,
+				6983D3192A04E651009E7465 /* InstagramPresenter.swift in Sources */,
+				69EC2AA829F9625000EA46ED /* EditRouter.swift in Sources */,
 				69206DDC29CB9EB600D3E241 /* RandomModels.swift in Sources */,
+				6983D31E2A04E651009E7465 /* InstagramInteractor.swift in Sources */,
 				69206CD429BCD60D00D3E241 /* LoginViewController.swift in Sources */,
 				69206CE429C0BB0800D3E241 /* ListModels.swift in Sources */,
+				69CC606129FF995300A60C5B /* InstagramApi.swift in Sources */,
 				699F165729D6E5AF00E09A2E /* BeerAPI.swift in Sources */,
+				69EC2AAA29F9625000EA46ED /* EditViewController.swift in Sources */,
 				697ED12829BB6779001253E3 /* RegistrationPresenter.swift in Sources */,
 				697ECFD029B51A9E001253E3 /* SceneDelegate.swift in Sources */,
 				69206DE829CB9EE000D3E241 /* ProfileRouter.swift in Sources */,
+				6983D31C2A04E651009E7465 /* InstagramModels.swift in Sources */,
 				697ECFD829B51A9E001253E3 /* Beer_Library.xcdatamodeld in Sources */,
 				69206CE229C0BB0800D3E241 /* ListWorker.swift in Sources */,
 				69206DD929CB9EB600D3E241 /* RandomPresenter.swift in Sources */,
 				69B2DAC829D47C06001A4AEF /* BeerTableViewCell.swift in Sources */,
 				69B2DABF29D1A7AE001A4AEF /* TabBarController.swift in Sources */,
 				697ED12A29BB6779001253E3 /* RegistrationRouter.swift in Sources */,
+				69EC2AA929F9625000EA46ED /* EditModels.swift in Sources */,
 				69206DEB29CB9EE000D3E241 /* ProfileInteractor.swift in Sources */,
+				69EC2AA629F9625000EA46ED /* EditPresenter.swift in Sources */,
 				69206CE329C0BB0800D3E241 /* ListRouter.swift in Sources */,
 				69206DEA29CB9EE000D3E241 /* ProfileViewController.swift in Sources */,
 				69206DE629CB9EE000D3E241 /* ProfilePresenter.swift in Sources */,
@@ -763,15 +904,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Beer_Library/Beer_Library.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Beer_Library/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "allow app always see your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "allow app to see current location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Login;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -790,15 +935,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Beer_Library/Beer_Library.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Beer_Library/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "allow app always see your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "allow app to see current location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Login;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -934,6 +1083,22 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		69CC605129FE5F2500A60C5B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.0.0;
+			};
+		};
+		69EC2AAE29FAAE2500EA46ED /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -941,6 +1106,41 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 69B2DAE129D575DB001A4AEF /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		69CC605229FE5F2500A60C5B /* FacebookAEM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69CC605129FE5F2500A60C5B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookAEM;
+		};
+		69CC605429FE5F2500A60C5B /* FacebookBasics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69CC605129FE5F2500A60C5B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookBasics;
+		};
+		69CC605629FE5F2500A60C5B /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69CC605129FE5F2500A60C5B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		69CC605829FE5F2500A60C5B /* FacebookGamingServices */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69CC605129FE5F2500A60C5B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookGamingServices;
+		};
+		69CC605A29FE5F2500A60C5B /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69CC605129FE5F2500A60C5B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		69CC605C29FE5F2500A60C5B /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69CC605129FE5F2500A60C5B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
+		};
+		69EC2AAF29FAAE2500EA46ED /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69EC2AAE29FAAE2500EA46ED /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -13,16 +13,22 @@
 import UIKit
 
 protocol ProfilePresentationLogic {
-    func presentSomething(response: Profile.ShowUser.Response)
+    func presentUser(response: Profile.ShowUser.Response)
 }
 
 class ProfilePresenter: ProfilePresentationLogic {
     weak var viewController: ProfileDisplayLogic?
   
-    // MARK: Do something
+    // MARK: Present User
   
-    func presentSomething(response: Profile.ShowUser.Response) {
-        let viewModel = Profile.ShowUser.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+    func presentUser(response: Profile.ShowUser.Response) {
+        let viewModel = Profile.ShowUser.ViewModel(firstName: response.firstName?.capitalized,
+                                                   lastName: response.lastName?.capitalized,
+                                                   email: response.email
+        )
+        viewController?.displayUser(viewModel: viewModel)
     }
+    
+    // MARK: Present Logout
+
 }

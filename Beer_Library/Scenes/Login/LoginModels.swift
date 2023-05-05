@@ -20,16 +20,21 @@ enum Login {
             let email: String?
             let password: String?
         }
-    
         struct Response {
             let email: String?
             let password: String?
         }
-    
         struct ViewModel {
             let email: String?
             let password: String?
-            var success: Bool
+        }
+    }
+    
+    enum Socials {
+        struct Request {
+            let firstName: String?
+            let lastName: String?
+            let email: String?
         }
     }
 }

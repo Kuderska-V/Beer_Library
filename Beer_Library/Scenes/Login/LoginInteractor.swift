@@ -11,9 +11,13 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 protocol LoginBusinessLogic {
     func login(request: Login.User.Request)
+    func googleLogin(request: Login.Socials.Request)
+    func facebookLogin()
 }
 
 protocol LoginDataStore {
@@ -22,20 +26,55 @@ protocol LoginDataStore {
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var presenter: LoginPresentationLogic?
-    var worker: LoginWorker?
     let defaults = UserDefaults.standard
-    //var name: String = ""
+    let user = CoreDataManager()
   
-    // MARK: Do something
+    // MARK: Fetch User
     
     func login(request: Login.User.Request) {
-        let user = CoreDataManager()
-        if user.fetchUser(email: request.email, password: request.password) {
-            defaults.set(request.email, forKey: UserDefaultsKeys.loggedInUserEmail.rawValue)
-            let response = Login.User.Response(email: request.email, password: request.password)
-            presenter?.presentLogin(response: response)
+        if !request.email!.isEmpty && !request.password!.isEmpty {
+            if user.fetchUser(email: request.email, password: request.password) {
+                defaults.set(request.email, forKey: UserDefaultsKeys.loggedInUserEmail.rawValue)
+                let response = Login.User.Response(email: request.email, password: request.password)
+                presenter?.presentLogin(response: response)
+            } else {
+                presenter?.presentIncorrectPassword()
+            }
         } else {
-            presenter?.presentIncorrectPassword()
+            presenter?.presentEmptyFields()
+        }
+    }
+    
+    func googleLogin(request: Login.Socials.Request ) {
+        user.saveUserFromSocials(email: request.email!, firstName: request.firstName!, lastName: request.lastName!)
+        presenter?.presentGoogleLogin()
+    }
+    
+    func facebookLogin() {
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: ["public_profile", "email"], from: LoginViewController(), handler: { result, error  in
+            if result?.isCancelled ?? false {
+                print("Cancelled")
+            } else if error != nil {
+                print("ERROR: Trying to get login results")
+            } else {
+                print("Logged in")
+                self.getFacebookData()
+            }
+        })
+    }
+    
+    func getFacebookData() {
+        let request = GraphRequest(graphPath: "me", parameters: ["fields":" email, first_name, last_name"])
+        request.start { _, result, error in
+            if error == nil {
+                let data: [String: AnyObject] = result as! [String: AnyObject]
+                let fbEmail = data["email"] as? String
+                let fbFirstName = data["first_name"] as? String
+                let fbLastName = data["last_name"] as? String
+                self.user.saveUserFromSocials(email: fbEmail!, firstName: fbFirstName!, lastName: fbLastName!)
+                self.presenter?.presentFacebookLogin()
+            }
         }
     }
 }

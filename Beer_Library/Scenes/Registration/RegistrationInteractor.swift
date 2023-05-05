@@ -17,35 +17,29 @@ protocol RegistrationBusinessLogic {
 }
 
 protocol RegistrationDataStore {
-    //var name: String { get set }
 }
 
 class RegistrationInteractor: RegistrationBusinessLogic, RegistrationDataStore {
-    
+
     var presenter: RegistrationPresentationLogic?
-    //  var worker: RegistrationWorker?
+    let newUser = CoreDataManager()
     let defaults = UserDefaults.standard
   
-    // MARK: Do something
+    // MARK: Register New User
   
     func registerNewUser(request: Registration.User.Request)  {
-        if Validator().isValid(email: request.email!) {
-            if Validator().isValid(password: request.password!) {
-                if request.password == request.passwordConfirm {
-                    let newUser = CoreDataManager()
-                    newUser.createUser(firstName: request.firstName!, lastName: request.lastName!, email: request.email!, password: request.password!)
-                    defaults.set(request.email, forKey: UserDefaultsKeys.loggedInUserEmail.rawValue)
-                    
-                    let response = Registration.User.Response(firstName: request.firstName, lastName: request.lastName, email: request.email, password: request.password, passwordConfirm: request.passwordConfirm)
-                    presenter?.presentRegisteredUser(response: response)
-                } else {
-                    presenter?.presentPasswordConfirmationError()
-                }
-            } else {
-                presenter?.presentInvalidPassword()
-            }
-        } else {
-            presenter?.presentInvalidEmail()
-        }
+        guard !request.firstName!.isEmpty && !request.lastName!.isEmpty && !request.email!.isEmpty && !request.password!.isEmpty && !request.passwordConfirm!.isEmpty else { presenter?.presentEmptyFields(); return }
+        guard Validator().isValid(email: request.email!) else { presenter?.presentInvalidEmail(); return }
+        guard Validator().isValid(password: request.password!) else { presenter?.presentInvalidPassword(); return }
+        guard request.password == request.passwordConfirm else { presenter?.presentPasswordConfirmationError(); return }
+        newUser.createUser(firstName: request.firstName!, lastName: request.lastName!, email: request.email!, password: request.password!)
+        defaults.set(request.email, forKey: UserDefaultsKeys.loggedInUserEmail.rawValue)
+        
+        let response = Registration.User.Response(firstName: request.firstName,
+                                                  lastName: request.lastName,
+                                                  email: request.email,
+                                                  password: request.password,
+                                                  passwordConfirm: request.passwordConfirm)
+        presenter?.presentRegisteredUser(response: response)
     }
 }
