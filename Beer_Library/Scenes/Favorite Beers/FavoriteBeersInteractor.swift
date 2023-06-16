@@ -10,8 +10,8 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 protocol FavoriteBeersBusinessLogic {
     func fetchBeers(request: FavoriteBeers.Show.Request)

@@ -13,7 +13,7 @@
 import UIKit
 
 protocol EditBusinessLogic {
-   func fetchUser(request: Edit.User.Request)
+    func fetchUser(request: Edit.User.Request)
     func updateDetails(request: Edit.UpdateUser.Request)
 }
 
@@ -23,14 +23,14 @@ protocol EditDataStore {
 class EditInteractor: EditBusinessLogic, EditDataStore {
     var presenter: EditPresentationLogic?
     var worker: EditWorker?
-    let user = CoreDataManager()
+    let coreDataManager = CoreDataManager()
   
     // MARK: Fetch User Details
   
     func fetchUser(request: Edit.User.Request) {
-        user.fetchProfileUser()
-        let firstName = user.userFirstName
-        let lastName = user.userLastName
+        let user = coreDataManager.fetchProfileUser()
+        let firstName = user.firstName
+        let lastName = user.lastName
         let response = Edit.User.Response(firstName: firstName, lastName: lastName)
         presenter?.presentUserDetails(response: response)
     }
@@ -38,7 +38,7 @@ class EditInteractor: EditBusinessLogic, EditDataStore {
     func updateDetails(request: Edit.UpdateUser.Request) {
         let firstName = request.firstName
         let lastName = request.lastName
-        user.saveEditUser(firstName: firstName, lastName: lastName)
+        coreDataManager.saveEditUser(firstName: firstName, lastName: lastName)
         let response = Edit.User.Response(firstName: firstName, lastName: lastName)
         presenter?.presentUserDetails(response: response)
     }

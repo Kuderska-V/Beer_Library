@@ -10,10 +10,10 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+import CoreLocation
 import Kingfisher
 import MapKit
-import CoreLocation
+import UIKit
 
 protocol RandomDisplayLogic: AnyObject {
     func displayRandomBeer(viewModel: Random.ShowDetails.ViewModel)

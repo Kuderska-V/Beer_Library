@@ -10,10 +10,10 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
 import CoreData
 import CoreLocation
 import MapKit
+import UIKit
 
 protocol DetailBusinessLogic {
     func fetchBeerDetails(request: Detail.ShowDetail.Request)
@@ -23,7 +23,6 @@ protocol DetailBusinessLogic {
     func fetchLocationPin()
     func fetchGoogleMapItem()
     func fetchLocation(request: Detail.Location.Request)
-
 }
 
 protocol DetailDataStore {
@@ -39,7 +38,6 @@ class DetailInteractor: NSObject, DetailBusinessLogic, DetailDataStore {
     let beerApi = BeerAPI()
     var isFavorite: Bool! = false
     var image: UIImage!
-    
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     let pin = MKPointAnnotation()
@@ -75,11 +73,9 @@ class DetailInteractor: NSObject, DetailBusinessLogic, DetailDataStore {
         if isAddedToFavourites() {
             remove()
             isFavorite = false
-            print("removed")
         } else {
             save()
             isFavorite = true
-            print("saved")
         }
         let response = Detail.SetFavoriteStatus.Response(isFavorite: isFavorite)
         presenter?.presentFavoriteStatus(response: response)

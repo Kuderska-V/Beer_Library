@@ -10,8 +10,8 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
 import GoogleSignIn
+import UIKit
 
 protocol LoginDisplayLogic: AnyObject {
     func displayLogin(viewModel: Login.User.ViewModel)

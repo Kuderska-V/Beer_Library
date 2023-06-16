@@ -12,7 +12,6 @@
 
 import UIKit
 
-
 protocol ListPresentationLogic {
     func presentBeers(response: List.ShowBeers.Response)
 }

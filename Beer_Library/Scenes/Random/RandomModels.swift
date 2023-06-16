@@ -9,10 +9,9 @@
 //  you can apply clean architecture to your iOS and Mac projects,
 //  see http://clean-swift.com
 //
-
-import UIKit
-import MapKit
 import CoreLocation
+import MapKit
+import UIKit
 
 enum Random {
     // MARK: Use cases

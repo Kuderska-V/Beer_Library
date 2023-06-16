@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="gqk-fh-aAS">
-                                <rect key="frame" x="30" y="118.99999999999997" width="333" height="494.33333333333326"/>
+                                <rect key="frame" x="30" y="119.00000000000003" width="333" height="287.66666666666674"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="yWT-iV-TlU">
                                         <rect key="frame" x="0.0" y="0.0" width="333" height="131"/>
@@ -42,14 +42,8 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NM4-na-nMe">
-                                        <rect key="frame" x="0.0" y="171" width="333" height="166.66666666666663"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="NM4-na-nMe" secondAttribute="height" multiplier="2" id="w34-Dj-i9A"/>
-                                        </constraints>
-                                    </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="6em-Gl-zQz">
-                                        <rect key="frame" x="0.0" y="377.66666666666669" width="333" height="116.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="171" width="333" height="116.66666666666669"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4r-jU-ALT">
                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="33.333333333333336"/>
@@ -85,11 +79,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="qPo-zU-AgE">
-                        <barButtonItem key="leftBarButtonItem" title="Instagram" image="instagram " id="YWL-WX-zKJ">
-                            <connections>
-                                <action selector="tapInstagramBtn:" destination="Y6W-OH-hqX" id="Gy9-10-eUO"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="wzl-ie-bPP">
                             <connections>
                                 <action selector="tapEditButton:" destination="Y6W-OH-hqX" id="GoY-Ku-Opt"/>
@@ -101,7 +90,6 @@
                         <outlet property="editButton" destination="wzl-ie-bPP" id="xce-Ii-0wo"/>
                         <outlet property="email" destination="i4h-y2-OZ7" id="uWZ-hC-oUC"/>
                         <outlet property="firstName" destination="lWB-1X-NaD" id="0Rz-Hw-20A"/>
-                        <outlet property="imageInstagram" destination="NM4-na-nMe" id="IgU-IV-ygF"/>
                         <outlet property="lastName" destination="nSv-YL-ORr" id="TXC-sf-hLn"/>
                     </connections>
                 </viewController>
@@ -109,38 +97,8 @@
             </objects>
             <point key="canvasLocation" x="1002.2900763358779" y="-2.1126760563380285"/>
         </scene>
-        <!--Instagram View Controller-->
-        <scene sceneID="aod-0e-TaX">
-            <objects>
-                <viewController storyboardIdentifier="InstagramVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="afq-MX-2TT" customClass="InstagramViewController" customModule="Beer_Library" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OJ9-Dk-Zgr">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kip-ZI-b9V">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="HHn-WB-c4e"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <connections>
-                        <outlet property="webView" destination="kip-ZI-b9V" id="kBY-oJ-lQo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VDf-hz-yAs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1742.7480916030534" y="-2.1126760563380285"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="instagram " width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

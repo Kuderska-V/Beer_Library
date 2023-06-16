@@ -13,18 +13,12 @@ protocol CoreDataManagerProtocol {
     func createUser(firstName: String, lastName: String, email: String, password: String)
     func fetchUser(email: String?, password: String?) -> Bool
     func saveUserFromSocials(email: String, firstName: String, lastName: String)
-    func fetchProfileUser()
+    func fetchProfileUser() -> User
     func saveEditUser(firstName: String, lastName: String)
 }
 
 class CoreDataManager: CoreDataManagerProtocol {
     
-    var userFirstName: String = ""
-    var userLastName: String = ""
-    var userEmail: String = ""
-    
-    var beers: [BeerItem] = []
-    var beer: BeerItem!
     var defaults = UserDefaults.standard
 
     // MARK: User Operations
@@ -87,20 +81,23 @@ class CoreDataManager: CoreDataManagerProtocol {
         }
     }
         
-    func fetchProfileUser() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+    func fetchProfileUser() -> User {
+        var user = User()
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return user }
         let managedContext = appDelegate.persistentContainer.viewContext
-        guard let email = defaults.value(forKey: UserDefaultsKeys.loggedInUserEmail.rawValue) as? String else { return }
+        guard let email = defaults.value(forKey: UserDefaultsKeys.loggedInUserEmail.rawValue) as? String else { return user }
         let request = NSFetchRequest<NSManagedObject>(entityName: "User")
         request.predicate = NSPredicate(format: "email = %@", email)
+        
         do {
-            guard let result = try? managedContext.fetch(request).first else { return }
-            userFirstName = (result.value(forKey: "firstName") as? String)!
-            userLastName = (result.value(forKey: "lastName") as? String)!
-            userEmail = (result.value(forKey: "email") as? String)!
+            guard let result = try? managedContext.fetch(request).first else { return user }
+            user.firstName = (result.value(forKey: "firstName") as? String)!
+            user.lastName = (result.value(forKey: "lastName") as? String)!
+            user.email = (result.value(forKey: "email") as? String)!
         } catch let error as NSError {
             print("Could not get user. \(error), \(error.userInfo)")
         }
+        return User(email: user.email, firstName: user.firstName, lastName: user.lastName)
     }
     
     func saveEditUser(firstName: String, lastName: String) {
@@ -122,5 +119,4 @@ class CoreDataManager: CoreDataManagerProtocol {
             print("Could not get user. \(error), \(error.userInfo)")
         }
     }
-    
 }

@@ -77,12 +77,6 @@ class ProfileViewController: UIViewController, ProfileDisplayLogic {
     @IBOutlet weak var lastName: UILabel!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var editButton: UIBarButtonItem!
-    @IBOutlet weak var imageInstagram: UIImageView!
-
-    var instagramApi = InstagramApi.shared
-    var testUserData = InstagramTestUser(access_token: "", user_id: 0)
-    var instagramUser: InstagramUser?
-   var vc: InstagramViewController?
     
     // MARK: Fetch User
     
@@ -105,18 +99,6 @@ class ProfileViewController: UIViewController, ProfileDisplayLogic {
     
     @IBAction func tapEditButton(_ sender: UIBarButtonItem) {
         router?.routeToEdit(segue: nil)
-    }
-    
-    // MARK: Fetch Instagram Photo
-    
-    func fetchInstagramPhoto() {
-        vc?.instagramApi = InstagramApi.shared
-        vc?.mainVC = self
-        router?.routeToInstagram(segue: nil)
-    }
-    
-    @IBAction func tapInstagramBtn(_ sender: Any) {
-        fetchInstagramPhoto()
     }
     
     // MARK: Logout

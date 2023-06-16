@@ -10,9 +10,9 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
+import UIKit
 
 protocol LoginBusinessLogic {
     func login(request: Login.User.Request)

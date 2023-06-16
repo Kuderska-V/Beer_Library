@@ -5,8 +5,8 @@
 //  Created by Vitalina Nazaruk on 29.03.2023.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 struct BeerItem: Codable {
     var id: Int
@@ -75,3 +75,8 @@ extension KeyedEncodingContainer {
     }
 }
 
+struct User {
+    var email = ""
+    var firstName = ""
+    var lastName = ""
+}

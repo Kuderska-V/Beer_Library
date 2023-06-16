@@ -52,12 +52,6 @@
 		697ED12B29BB6779001253E3 /* RegistrationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697ED12529BB6779001253E3 /* RegistrationModels.swift */; };
 		697ED12C29BB6779001253E3 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697ED12629BB6779001253E3 /* RegistrationViewController.swift */; };
 		697ED12D29BB6779001253E3 /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697ED12729BB6779001253E3 /* RegistrationInteractor.swift */; };
-		6983D3192A04E651009E7465 /* InstagramPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983D3132A04E651009E7465 /* InstagramPresenter.swift */; };
-		6983D31A2A04E651009E7465 /* InstagramWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983D3142A04E651009E7465 /* InstagramWorker.swift */; };
-		6983D31B2A04E651009E7465 /* InstagramRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983D3152A04E651009E7465 /* InstagramRouter.swift */; };
-		6983D31C2A04E651009E7465 /* InstagramModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983D3162A04E651009E7465 /* InstagramModels.swift */; };
-		6983D31D2A04E651009E7465 /* InstagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983D3172A04E651009E7465 /* InstagramViewController.swift */; };
-		6983D31E2A04E651009E7465 /* InstagramInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6983D3182A04E651009E7465 /* InstagramInteractor.swift */; };
 		699E75FC29DD960B00217363 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699E75FB29DD960B00217363 /* CoreDataManager.swift */; };
 		699E75FF29DDCA0B00217363 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699E75FE29DDCA0B00217363 /* Validator.swift */; };
 		699F165729D6E5AF00E09A2E /* BeerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699F165629D6E5AF00E09A2E /* BeerAPI.swift */; };
@@ -87,8 +81,6 @@
 		69CC605929FE5F2500A60C5B /* FacebookGamingServices in Frameworks */ = {isa = PBXBuildFile; productRef = 69CC605829FE5F2500A60C5B /* FacebookGamingServices */; };
 		69CC605B29FE5F2500A60C5B /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 69CC605A29FE5F2500A60C5B /* FacebookLogin */; };
 		69CC605D29FE5F2500A60C5B /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = 69CC605C29FE5F2500A60C5B /* FacebookShare */; };
-		69CC605F29FF986A00A60C5B /* InstagramVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CC605E29FF986A00A60C5B /* InstagramVC.swift */; };
-		69CC606129FF995300A60C5B /* InstagramApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CC606029FF995300A60C5B /* InstagramApi.swift */; };
 		69EC2AA629F9625000EA46ED /* EditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC2AA029F9625000EA46ED /* EditPresenter.swift */; };
 		69EC2AA729F9625000EA46ED /* EditWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC2AA129F9625000EA46ED /* EditWorker.swift */; };
 		69EC2AA829F9625000EA46ED /* EditRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC2AA229F9625000EA46ED /* EditRouter.swift */; };
@@ -166,12 +158,6 @@
 		697ED12529BB6779001253E3 /* RegistrationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModels.swift; sourceTree = "<group>"; };
 		697ED12629BB6779001253E3 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		697ED12729BB6779001253E3 /* RegistrationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
-		6983D3132A04E651009E7465 /* InstagramPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramPresenter.swift; sourceTree = "<group>"; };
-		6983D3142A04E651009E7465 /* InstagramWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramWorker.swift; sourceTree = "<group>"; };
-		6983D3152A04E651009E7465 /* InstagramRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramRouter.swift; sourceTree = "<group>"; };
-		6983D3162A04E651009E7465 /* InstagramModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramModels.swift; sourceTree = "<group>"; };
-		6983D3172A04E651009E7465 /* InstagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramViewController.swift; sourceTree = "<group>"; };
-		6983D3182A04E651009E7465 /* InstagramInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramInteractor.swift; sourceTree = "<group>"; };
 		699E75FB29DD960B00217363 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		699E75FE29DDCA0B00217363 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		699F165629D6E5AF00E09A2E /* BeerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerAPI.swift; sourceTree = "<group>"; };
@@ -195,8 +181,6 @@
 		69B2DAD829D55D36001A4AEF /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
 		69B2DADF29D55D44001A4AEF /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		69CC605029FE5C4500A60C5B /* Beer_Library.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Beer_Library.entitlements; sourceTree = "<group>"; };
-		69CC605E29FF986A00A60C5B /* InstagramVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramVC.swift; sourceTree = "<group>"; };
-		69CC606029FF995300A60C5B /* InstagramApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramApi.swift; sourceTree = "<group>"; };
 		69EC2AA029F9625000EA46ED /* EditPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresenter.swift; sourceTree = "<group>"; };
 		69EC2AA129F9625000EA46ED /* EditWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWorker.swift; sourceTree = "<group>"; };
 		69EC2AA229F9625000EA46ED /* EditRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRouter.swift; sourceTree = "<group>"; };
@@ -292,7 +276,6 @@
 				69206DE329CB9EE000D3E241 /* ProfileModels.swift */,
 				69206DE229CB9EE000D3E241 /* ProfileRouter.swift */,
 				69206DEE29CB9F0900D3E241 /* Profile.storyboard */,
-				69CC606229FF99CE00A60C5B /* Instagram */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -487,21 +470,6 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
-		69CC606229FF99CE00A60C5B /* Instagram */ = {
-			isa = PBXGroup;
-			children = (
-				69CC605E29FF986A00A60C5B /* InstagramVC.swift */,
-				69CC606029FF995300A60C5B /* InstagramApi.swift */,
-				6983D3132A04E651009E7465 /* InstagramPresenter.swift */,
-				6983D3142A04E651009E7465 /* InstagramWorker.swift */,
-				6983D3152A04E651009E7465 /* InstagramRouter.swift */,
-				6983D3162A04E651009E7465 /* InstagramModels.swift */,
-				6983D3172A04E651009E7465 /* InstagramViewController.swift */,
-				6983D3182A04E651009E7465 /* InstagramInteractor.swift */,
-			);
-			path = Instagram;
-			sourceTree = "<group>";
-		};
 		69EC2A9F29F9622B00EA46ED /* Edit */ = {
 			isa = PBXGroup;
 			children = (
@@ -678,7 +646,6 @@
 				69ABE4C429E6EF140084DEE1 /* FavoriteBeersInteractor.swift in Sources */,
 				69206CE529C0BB0800D3E241 /* ListViewController.swift in Sources */,
 				69206DE929CB9EE000D3E241 /* ProfileModels.swift in Sources */,
-				69CC605F29FF986A00A60C5B /* InstagramVC.swift in Sources */,
 				69206CD129BCD60D00D3E241 /* LoginWorker.swift in Sources */,
 				69206CD529BCD60D00D3E241 /* LoginInteractor.swift in Sources */,
 				69B2DACA29D48053001A4AEF /* BeerItem.swift in Sources */,
@@ -686,7 +653,6 @@
 				69B2DAC129D1BB71001A4AEF /* ViewControllerExtension.swift in Sources */,
 				69206DDE29CB9EB600D3E241 /* RandomInteractor.swift in Sources */,
 				69ABE4C829E73B460084DEE1 /* FavoriteTableViewCell.swift in Sources */,
-				6983D31A2A04E651009E7465 /* InstagramWorker.swift in Sources */,
 				69206D7629CB311D00D3E241 /* Constants.swift in Sources */,
 				69206CE629C0BB0800D3E241 /* ListInteractor.swift in Sources */,
 				69B2DADC29D55D36001A4AEF /* DetailModels.swift in Sources */,
@@ -700,7 +666,6 @@
 				697ECFCE29B51A9E001253E3 /* AppDelegate.swift in Sources */,
 				69206DE729CB9EE000D3E241 /* ProfileWorker.swift in Sources */,
 				699E75FC29DD960B00217363 /* CoreDataManager.swift in Sources */,
-				6983D31B2A04E651009E7465 /* InstagramRouter.swift in Sources */,
 				69ABE4C329E6EF140084DEE1 /* FavoriteBeersViewController.swift in Sources */,
 				69206DDD29CB9EB600D3E241 /* RandomViewController.swift in Sources */,
 				69206DDB29CB9EB600D3E241 /* RandomRouter.swift in Sources */,
@@ -709,22 +674,17 @@
 				697ED12C29BB6779001253E3 /* RegistrationViewController.swift in Sources */,
 				69206CD229BCD60D00D3E241 /* LoginRouter.swift in Sources */,
 				69206CE129C0BB0800D3E241 /* ListPresenter.swift in Sources */,
-				6983D31D2A04E651009E7465 /* InstagramViewController.swift in Sources */,
 				697ED12D29BB6779001253E3 /* RegistrationInteractor.swift in Sources */,
 				69206CD329BCD60D00D3E241 /* LoginModels.swift in Sources */,
-				6983D3192A04E651009E7465 /* InstagramPresenter.swift in Sources */,
 				69EC2AA829F9625000EA46ED /* EditRouter.swift in Sources */,
 				69206DDC29CB9EB600D3E241 /* RandomModels.swift in Sources */,
-				6983D31E2A04E651009E7465 /* InstagramInteractor.swift in Sources */,
 				69206CD429BCD60D00D3E241 /* LoginViewController.swift in Sources */,
 				69206CE429C0BB0800D3E241 /* ListModels.swift in Sources */,
-				69CC606129FF995300A60C5B /* InstagramApi.swift in Sources */,
 				699F165729D6E5AF00E09A2E /* BeerAPI.swift in Sources */,
 				69EC2AAA29F9625000EA46ED /* EditViewController.swift in Sources */,
 				697ED12829BB6779001253E3 /* RegistrationPresenter.swift in Sources */,
 				697ECFD029B51A9E001253E3 /* SceneDelegate.swift in Sources */,
 				69206DE829CB9EE000D3E241 /* ProfileRouter.swift in Sources */,
-				6983D31C2A04E651009E7465 /* InstagramModels.swift in Sources */,
 				697ECFD829B51A9E001253E3 /* Beer_Library.xcdatamodeld in Sources */,
 				69206CE229C0BB0800D3E241 /* ListWorker.swift in Sources */,
 				69206DD929CB9EB600D3E241 /* RandomPresenter.swift in Sources */,

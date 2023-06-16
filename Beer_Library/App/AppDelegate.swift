@@ -5,10 +5,10 @@
 //  Created by Vitalina Nazaruk on 05.03.2023.
 //
 
-import UIKit
 import CoreData
-import GoogleSignIn
 import FacebookCore
+import GoogleSignIn
+import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

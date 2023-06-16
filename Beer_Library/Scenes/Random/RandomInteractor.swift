@@ -10,10 +10,10 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
 import CoreData
 import CoreLocation
 import MapKit
+import UIKit
 
 protocol RandomBusinessLogic {
     func fetchRandomBeer()

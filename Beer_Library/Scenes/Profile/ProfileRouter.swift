@@ -15,7 +15,6 @@ import UIKit
 @objc protocol ProfileRoutingLogic {
     func routeToFavoriteBeers(segue: UIStoryboardSegue?)
     func routeToEdit(segue: UIStoryboardSegue?)
-    func routeToInstagram(segue: UIStoryboardSegue?)
     func routeToLogin()
 }
 
@@ -57,12 +56,6 @@ class ProfileRouter: NSObject, ProfileRoutingLogic, ProfileDataPassing {
         }
     }
     
-    func routeToInstagram(segue: UIStoryboardSegue?) {
-        let storyboard = UIStoryboard(name: Storyboards.profile.rawValue, bundle: nil)
-        let destinationVC = storyboard.instantiateViewController(withIdentifier: ViewControllers.instagram.rawValue) as! InstagramViewController
-        navigateToInstagram(source: viewController!, destination: destinationVC)
-    }
-    
     func routeToLogin() {
         let storyboard = UIStoryboard(name: Storyboards.login.rawValue, bundle: Bundle.main)
         let vc = storyboard.instantiateViewController(withIdentifier: ViewControllers.login.rawValue) as? LoginViewController
@@ -79,10 +72,6 @@ class ProfileRouter: NSObject, ProfileRoutingLogic, ProfileDataPassing {
     
     func navigateToEdit(source: ProfileViewController, destination: EditViewController) {
         source.show(destination, sender: nil)
-    }
-    
-    func navigateToInstagram(source: ProfileViewController, destination: InstagramViewController) {
-        source.present(destination, animated: true)
     }
   
   // MARK: Passing data

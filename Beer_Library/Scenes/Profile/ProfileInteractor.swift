@@ -23,15 +23,15 @@ protocol ProfileDataStore {
 class ProfileInteractor: ProfileBusinessLogic, ProfileDataStore {
     var presenter: ProfilePresentationLogic?
     var worker: ProfileWorker?
-    let user = CoreDataManager()
+    let coreDataManager = CoreDataManager()
 
     // MARK: Fetch User
   
     func fetchUser(request: Profile.ShowUser.Request) {
-        user.fetchProfileUser()
-        let firstName = user.userFirstName
-        let lastName = user.userLastName
-        let email = user.userEmail
+        let user = coreDataManager.fetchProfileUser()
+        let firstName = user.firstName
+        let lastName = user.lastName
+        let email = user.email
         let response = Profile.ShowUser.Response(firstName: firstName, lastName: lastName, email: email)
         presenter?.presentUser(response: response)
     }

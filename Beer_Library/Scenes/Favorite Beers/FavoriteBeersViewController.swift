@@ -10,8 +10,8 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
 import Kingfisher
+import UIKit
 
 protocol FavoriteBeersDisplayLogic: AnyObject {
     func displayFavoriteBeers(viewModel: FavoriteBeers.Show.ViewModel)

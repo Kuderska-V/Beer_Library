@@ -10,8 +10,8 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
 import MapKit
+import UIKit
 
 enum Detail {
     

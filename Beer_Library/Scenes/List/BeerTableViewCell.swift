@@ -5,8 +5,8 @@
 //  Created by Vitalina Nazaruk on 29.03.2023.
 //
 
-import UIKit
 import Kingfisher
+import UIKit
 
 class BeerTableViewCell: UITableViewCell {
 

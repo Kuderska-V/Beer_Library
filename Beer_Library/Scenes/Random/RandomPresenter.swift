@@ -22,7 +22,6 @@ protocol RandomPresentationLogic {
 
 class RandomPresenter: RandomPresentationLogic {
 
-    
     weak var viewController: RandomDisplayLogic?
   
     // MARK: Present Random Beer

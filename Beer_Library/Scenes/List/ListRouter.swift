@@ -18,7 +18,6 @@ import UIKit
 
 protocol ListDataPassing {
     var dataStore: ListDataStore? { get }
-    
 }
 
 class ListRouter: NSObject, ListRoutingLogic, ListDataPassing {

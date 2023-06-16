@@ -10,10 +10,10 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+import CoreLocation
 import Kingfisher
 import MapKit
-import CoreLocation
+import UIKit
 
 protocol DetailDisplayLogic: AnyObject {
     func displayBeerDetails(viewModel: Detail.ShowDetail.ViewModel)
